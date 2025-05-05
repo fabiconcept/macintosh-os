@@ -1,7 +1,11 @@
-import React from 'react'
+import Bg from './components/Bg';
+import Header from './components/Header';
 
 export default function page() {
   return (
-    <div>page</div>
+    <div className="relative">
+        <Bg />
+        <Header />
+    </div>
   )
 }
