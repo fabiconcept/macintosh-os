@@ -74,3 +74,190 @@ export const permanentIcons: IconProps[] = [
         action: () => {}
     }
 ]
+
+export type QuoteDictionary = {
+    [key: string]: string[];
+};
+
+export const quotesByChar: QuoteDictionary = {
+    'F': [
+        "Fascinating!",
+        "Fierce!",
+        "Fantastic!",
+        "Formidable!",
+        "Flawless!",
+        "Fearless!",
+        "Fabulous!",
+        "Foremost!",
+        "Flourishing!",
+        "Futuristic!"
+    ],
+    'a': [
+        "Amazing!",
+        "Astonishing!",
+        "Awesome!",
+        "Admirable!",
+        "Authentic!",
+        "Astute!",
+        "Affirming!",
+        "Acclaimed!",
+        "Artistic!",
+        "Adventurous!"
+    ],
+    'V': [
+        "Victorious!",
+        "Valiant!",
+        "Valuable!",
+        "Venerable!",
+        "Vibrant!",
+        "Versatile!",
+        "Visionary!",
+        "Vigorous!",
+        "Virtuous!",
+        "Voluminous!"
+    ],
+    'o': [
+        "Outstanding!",
+        "Original!",
+        "Optimal!",
+        "Opulent!",
+        "Observant!",
+        "Omnipotent!",
+        "Opportunistic!",
+        "Optimistic!",
+        "Overachieving!",
+        "Otherworldly!"
+    ],
+    'u': [
+        "Unmatched!",
+        "Unbeatable!",
+        "Ultimate!",
+        "Unreal!",
+        "Unforgettable!",
+        "Unique!",
+        "Uplifting!",
+        "Unstoppable!",
+        "Unparalleled!",
+        "Unyielding!"
+    ],
+    'R': [
+        "Remarkable!",
+        "Radiant!",
+        "Revolutionary!",
+        "Royal!",
+        "Respected!",
+        "Resourceful!",
+        "Resilient!",
+        "Refreshing!",
+        "Riveting!",
+        "Revered!"
+    ],
+    'T': [
+        "Tremendous!",
+        "Terrific!",
+        "Top-notch!",
+        "Talented!",
+        "Triumphant!",
+        "Tenacious!",
+        "Trailblazing!",
+        "Transformative!",
+        "Transcendent!",
+        "Timeless!"
+    ],
+    'C': [
+        "Captivating!",
+        "Charismatic!",
+        "Commanding!",
+        "Courageous!",
+        "Creative!",
+        "Compelling!",
+        "Confident!",
+        "Celebrated!",
+        "Cultured!",
+        "Classy!"
+    ],
+    'H': [
+        "Heroic!",
+        "Honorable!",
+        "Humble!",
+        "High-caliber!",
+        "Hypnotic!",
+        "Historic!",
+        "Harmonious!",
+        "Heartening!",
+        "Heavyweight!",
+        "Hallmark!"
+    ],
+    'K': [
+        "Kingly!",
+        "Keen!",
+        "Knockout!",
+        "Knowledgeable!",
+        "Kaleidoscopic!",
+        "Key!",
+        "Kind-hearted!",
+        "Killer!",
+        "Kinetic!",
+        "Knightly!"
+    ],
+    'w': [
+        "Wonderful!",
+        "Wise!",
+        "Winning!",
+        "World-class!",
+        "Wholesome!",
+        "Wondrous!",
+        "Worthy!",
+        "Well-respected!",
+        "Witty!",
+        "Wicked!"
+    ],
+    'A': [
+        "Astounding!",
+        "Astonishing!",
+        "Acclaimed!",
+        "Audacious!",
+        "Admirable!",
+        "Ambitious!",
+        "Authentic!",
+        "Authoritative!",
+        "Awe-inspiring!",
+        "Absolute!"
+    ],
+    'J': [
+        "Jaw-dropping!",
+        "Jubilant!",
+        "Judicious!",
+        "Just!",
+        "Jazzy!",
+        "Jovial!",
+        "Joyous!",
+        "Journeyman!",
+        "Justified!",
+        "Jewel-like!"
+    ],
+    'B': [
+        "Brilliant!",
+        "Bold!",
+        "Breathtaking!",
+        "Boundless!",
+        "Balanced!",
+        "Benevolent!",
+        "Beloved!",
+        "Beneficial!",
+        "Brave!",
+        "Blazing!"
+    ],
+    'i': [
+        "Incredible!",
+        "Impressive!",
+        "Inspiring!",
+        "Illuminating!",
+        "Ingenious!",
+        "Indomitable!",
+        "Illustrious!",
+        "Inventive!",
+        "Intuitive!",
+        "Iconic!"
+    ]
+};
