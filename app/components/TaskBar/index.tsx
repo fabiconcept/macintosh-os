@@ -52,7 +52,7 @@ const SortableIcon = ({ id, ...props }: IconProps & { id: string }) => {
 
     return (
         <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
-            <Icon {...props} />
+            <Icon {...props} id={id} />
         </div>
     );
 };
@@ -116,7 +116,7 @@ export default function TaskBar() {
     };
 
     return (
-        <div className="fixed bottom-2 p-2 left-1/2 -translate-x-1/2 rounded-3xl border border-foreground/10 bg-foreground/10 backdrop-blur-sm">
+        <div className="fixed bottom-2 p-2 left-1/2 z-[999] -translate-x-1/2 rounded-3xl border border-foreground/10 bg-foreground/10 backdrop-blur-sm">
             <div className="flex items-stretch gap-2">
                 <DndContext
                     sensors={sensors}

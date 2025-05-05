@@ -1,9 +1,25 @@
+export const BOX_WIDTH = 550;
+export const BOX_HEIGHT = 400;
+
+export enum WindowType {
+    Finder = "finder",
+    Launchpad = "launchpad",
+    Notes = "notes",
+    Terminal = "terminal",
+    Mail = "mail",
+    Safari = "safari",
+    Settings = "settings",
+    Spotify = "spotify",
+    Downloads = "downloads",
+    Bin = "bin",
+}
+
 export interface IconProps {
     id: string;
     src: string;
     alt: string;
     tooltip: string;
-    action: () => void;
+    windowType: WindowType;
 }
 
 export const icons: IconProps[] = [
@@ -12,49 +28,49 @@ export const icons: IconProps[] = [
         src: "/images/icons/finder.png",
         alt: "Finder",
         tooltip: "Finder",
-        action: () => {}
+        windowType: WindowType.Finder,
     },
     {
         id: "icon-2",
         src: "/images/icons/launchpad.png",
         alt: "Launchpad",
         tooltip: "Launchpad",
-        action: () => {}
+        windowType: WindowType.Launchpad,
     },
     {
         id: "icon-3",
         src: "/images/icons/notes.png",
         alt: "Notes",
         tooltip: "Notes",
-        action: () => {}
+        windowType: WindowType.Notes,
     },
     {
         id: "icon-4",
         src: "/images/icons/terminal.png",
         alt: "Terminal",
         tooltip: "Terminal",
-        action: () => {}
+        windowType: WindowType.Terminal,
     },
     {
         id: "icon-5",
         src: "/images/icons/mail.png",
         alt: "Mail",
         tooltip: "Mail",
-        action: () => {}
+        windowType: WindowType.Mail,
     },
     { 
         id: "icon-6",
         src: "/images/icons/settings.png",
         alt: "Settings",
         tooltip: "Settings",
-        action: () => {}
+        windowType: WindowType.Settings,
     },
     {
         id: "icon-7",
         src: "/images/icons/spotify.png",
         alt: "Spotify",
         tooltip: "Spotify",
-        action: () => {}
+        windowType: WindowType.Spotify,
     }
 ]
 
@@ -64,14 +80,14 @@ export const permanentIcons: IconProps[] = [
         src: "/images/icons/download.png",
         alt: "Download",
         tooltip: "Download",
-        action: () => {}
+        windowType: WindowType.Downloads,
     },
     {
         id: "per-icon-2",
         src: "/images/icons/bin.png",
         alt: "Bin",
         tooltip: "Bin",
-        action: () => {}
+        windowType: WindowType.Bin,
     }
 ]
 

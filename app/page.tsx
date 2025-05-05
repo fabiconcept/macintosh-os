@@ -1,3 +1,4 @@
+import AppWindows from './components/AppViewer/AppWindows';
 import Bg from './components/Bg';
 import Header from './components/Header';
 import TaskBar from './components/TaskBar';
@@ -8,6 +9,7 @@ export default function page() {
         <Bg />
         <Header />
         <TaskBar />
+        <AppWindows />
     </div>
   )
 }
