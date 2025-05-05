@@ -277,3 +277,77 @@ export const quotesByChar: QuoteDictionary = {
         "Iconic!"
     ]
 };
+
+export interface LaunchpadApp {
+    id: string;
+    src: string;
+    alt: string;
+    title: string;
+    url: string;
+}
+
+export const launchpadApps: LaunchpadApp[] = [
+    {
+        id: "launchpad-app-1",
+        src: "/images/icons/facebook.png",
+        alt: "Facebook",
+        title: "Facebook",
+        url: "https://www.facebook.com/fabiconcept",
+    },
+    {
+        id: "launchpad-app-2",
+        src: "/images/icons/instagram.png",
+        alt: "Instagram",
+        title: "Instagram",
+        url: "https://www.instagram.com/fabiconcept_ng",
+    },
+    {
+        id: "launchpad-app-3",
+        src: "/images/icons/x.png",
+        alt: "X",
+        title: "X",
+        url: "https://www.x.com/goat_h2o",
+    },
+    {
+        id: "launchpad-app-4",
+        src: "/images/icons/whatsapp.png",
+        alt: "WhatsApp",
+        title: "WhatsApp",
+        url: "https://wa.link/78bp13",
+    },
+    {
+        id: "launchpad-app-5",
+        src: "/images/icons/github.png",
+        alt: "GitHub",
+        title: "GitHub",
+        url: "https://www.github.com/fabiconcept",
+    },
+    {
+        id: "launchpad-app-6",
+        src: "/images/icons/linkedin.png",
+        alt: "LinkedIn",
+        title: "LinkedIn",
+        url: "https://www.linkedin.com/fabiconcept/",
+    },
+    {
+        id: "launchpad-app-7",
+        src: "/images/icons/dribble.png",
+        alt: "Dribbble",
+        title: "Dribbble",
+        url: "https://www.dribbble.com/fabiconcept",
+    },
+    {
+        id: "launchpad-app-8",
+        src: "/images/icons/secret.png",
+        alt: "Secret",
+        title: "Secret Room",
+        url: "https://secret-room-orpin.vercel.app/ginvite/global-98cd99b7-bd7b-4942-a6b0-c16feff7f39b",
+    },
+    {
+        id: "launchpad-app-9",
+        src: "/images/icons/safari.png",
+        alt: "Safari",
+        title: "Safari",
+        url: "https://fabiconcept.online/",
+    }
+]
