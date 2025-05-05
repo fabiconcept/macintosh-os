@@ -7,6 +7,7 @@ export interface AppWindow {
     title: string;
     position: { x: number; y: number };
     fixedLocation: "right" | "left";
+    isMinimized: boolean;
     windowType: WindowType;
 }
 
@@ -15,6 +16,8 @@ interface AppWindowsStore {
     addWindow: (window: AppWindow) => void;
     removeWindow: (id: string) => void;
     updateWindow: (id: string, update: Partial<AppWindow>) => void;
+    minimizeWindow: (id: string, position: { x: number; y: number }) => void;
+    restoreWindow: (id: string) => void;
     reorderToTop: (id: string) => void;
 }
 
@@ -32,6 +35,16 @@ const useAppWindows = create<AppWindowsStore>((set) => ({
             ...state.windows.filter((window) => window.id !== id),
             ...state.windows.filter((window) => window.id === id)
         ],
+    })),
+    minimizeWindow: (id, position) => set((state) => ({
+        windows: state.windows.map((window) =>
+            window.id === id ? { ...window, isMinimized: true, position } : window
+        ),
+    })),
+    restoreWindow: (id) => set((state) => ({
+        windows: state.windows.map((window) =>
+            window.id === id ? { ...window, isMinimized: false } : window
+        ),
     })),
 }))
 

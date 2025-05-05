@@ -15,13 +15,17 @@ export default function Icon({
 }: IconProps) {
     const { theme } = useAppStore();
 
-    const { windows, addWindow } = useAppWindows();
+    const { windows, addWindow, restoreWindow } = useAppWindows();
 
     const thisWindow = windows.find((window) => window.id === id);
 
     const isWindowOpen = !!thisWindow;
 
     const handleOpenWindow = () => {
+        if (thisWindow?.isMinimized) {
+            restoreWindow(id, );
+            return;
+        }
         if (isWindowOpen) return;
 
         const { innerWidth, innerHeight } = window;
@@ -43,6 +47,7 @@ export default function Icon({
             position: { x: randomX, y: randomY },
             fixedLocation: "right",
             windowType,
+            isMinimized: false,
         });
 
     };

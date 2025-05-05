@@ -3,14 +3,17 @@
 import AppWindow from "./AppWindow";
 import { AppViewerProvider } from ".";
 import useAppWindows from "@/store/useAppWindows";
+import { AnimatePresence } from 'framer-motion';
 
 export default function AppWindows() {
     const { windows } = useAppWindows();
     return (
         <AppViewerProvider>
-            {windows.map((window) => (
-                <AppWindow key={window.id} windowProps={window} />
-            ))}
+            <AnimatePresence>
+                {windows.map((window) => (
+                    window.isMinimized ? null : <AppWindow key={window.id} windowProps={window} />
+                ))}
+            </AnimatePresence>
         </AppViewerProvider>
     )
 }

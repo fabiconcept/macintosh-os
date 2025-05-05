@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import {
   DndContext,
   useDraggable,
@@ -12,6 +12,10 @@ import useAppWindows, { AppWindow } from '@/store/useAppWindows';
 import { BOX_HEIGHT, BOX_WIDTH } from '@/constants';
 import { LucideMaximize2, LucideMinus, LucideX } from 'lucide-react';
 import Spotify from '../Windows/Spotify';
+import LaunchPad from '../Windows/LaunchPad';
+import { motion } from 'framer-motion';
+import Terminal from '../Windows/Terminal';
+import clsx from 'clsx';
 
 
 const EDGE_PADDING = 0;
@@ -52,7 +56,7 @@ const DraggableBox = ({
     id: 'box',
   });
 
-  const { reorderToTop, removeWindow } = useAppWindows();
+  const { reorderToTop, removeWindow, minimizeWindow } = useAppWindows();
 
   const appliedX = position.x + (transform?.x || 0);
   const appliedY = position.y + (transform?.y || 0);
@@ -66,41 +70,68 @@ const DraggableBox = ({
     removeWindow(windowProps.id);
   }
 
-  const WindowToRender = ()=> {
+  const handleMinimize = () => {
+    minimizeWindow(windowProps.id, position);
+  }
+
+  const WindowToRender = useCallback(() => {
     switch (windowProps.windowType) {
       case 'spotify':
         return <Spotify />;
+      case 'launchpad':
+        return <LaunchPad />;
+      case 'terminal':
+        return <Terminal />;
       default:
         return <div>Window not found</div>;
     }
-  };
+  }, [windowProps.windowType]);
+
+  const canMinimize = windowProps.windowType !== 'terminal';
+  const canMaximize = windowProps.windowType !== 'terminal';
+
+
 
   return (
     <div
       ref={setNodeRef}
-      className="fixed z-50 w-[550px] h-[400px] bg-background/70 backdrop-blur-md shadow-xl border border-foreground/30 rounded-2xl overflow-hidden"
+      className="fixed z-50 w-[550px] h-[400px] bg-background/70 backdrop-blur-md shadow-xl border border-foreground/30 rounded-2xl overflow-hidden flex flex-col"
       style={style}
       onClick={() => reorderToTop(windowProps.id)}
     >
       <div
-        className="handle cursor-move p-2 font-semibold rounded-t-lg relative border-b border-foreground/30"
+        className="handle cursor-move p-2 font-semibold rounded-t-lg relative border-b border-foreground/30 w-full"
       >
         <div className='flex items-center gap-1 absolute top-1/2 -translate-y-1/2 left-3 group'>
-          <div 
+          <div
             title='Close window'
             onClick={handleClose}
             className='cursor-pointer h-4 w-4 rounded-full grid place-items-center bg-red-400'
           ><LucideX size={10} className='text-black group-hover:opacity-100 opacity-0 transition-opacity duration-300' /></div>
-          <div 
+          <div
             title='Minimize window'
-            className='cursor-pointer h-4 w-4 rounded-full grid place-items-center bg-yellow-400'
-          ><LucideMinus size={10} className='text-black group-hover:opacity-100 opacity-0 transition-opacity duration-300' /></div>
-          <div 
+            onClick={canMinimize ? handleMinimize : undefined}
+            className={clsx(
+                'h-4 w-4 rounded-full grid place-items-center bg-yellow-400',
+                canMinimize ? 'cursor-pointer grayscale-0' : 'grayscale brightness-50 hidden'
+            )}
+          ><LucideMinus size={10} className={clsx(
+            'text-black transition-opacity duration-300',
+            canMinimize ? 'group-hover:opacity-100 opacity-0' : 'opacity-0'
+          )} /></div>
+          <div
             title='Maximize window'
-            className='cursor-pointer h-4 w-4 rounded-full grid place-items-center bg-green-400'
-          ><LucideMaximize2 size={10} className='text-black group-hover:opacity-100 opacity-0 transition-opacity duration-300' /></div>
+            onClick={canMaximize ? () => {} : undefined}
+            className={clsx(
+                'h-4 w-4 rounded-full grid place-items-center bg-green-400',
+                canMaximize ? 'cursor-pointer grayscale-0 opacity-100' : 'grayscale brightness-50 opacity-0 hidden'
+            )}
+          ><LucideMaximize2 size={10} className={clsx(
+            'text-black transition-opacity duration-300',
+            canMaximize ? 'group-hover:opacity-100 opacity-0' : 'opacity-0'
+          )} /></div>
         </div>
-        <div 
+        <div
           {...listeners}
           {...attributes}
           className='text-center select-none'
@@ -108,9 +139,14 @@ const DraggableBox = ({
           <span className='pointer-events-none'>{windowProps.title}</span>
         </div>
       </div>
-      <div className='p-2'>
+      {windowProps.windowType !== 'terminal' ? <motion.div
+            initial={{ opacity: 0, scale: 2 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.35, delay: 0.15, ease: "easeOut" }}
+            className='p-2 max-h-full overflow-y-auto launchpad-container pb-16 flex-1'
+        >
         <WindowToRender />
-      </div>
+      </motion.div> : <><WindowToRender /></>}
     </div>
   );
 };
@@ -142,10 +178,50 @@ const DraggableContainer = ({ windowProps }: { windowProps: AppWindow }) => {
     }
   };
 
+  const variants = {
+    hidden: {
+      scale: 0.9,
+      opacity: 0,
+      y: 30,
+      transition: {
+        type: 'spring',
+        stiffness: 400,
+        damping: 25,
+      },
+    },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: 'spring',
+        stiffness: 400,
+        damping: 25,
+      },
+    },
+    exit: {
+      scale: 0.9,
+      opacity: 0,
+      y: 30,
+      transition: {
+        type: 'spring',
+        stiffness: 400,
+        damping: 20,
+      },
+    },
+  };
+
   return (
-    <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
-      <DraggableBox position={position} windowProps={windowProps} />
-    </DndContext>
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      variants={variants}
+    >
+      <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
+        <DraggableBox position={position} windowProps={windowProps} />
+      </DndContext>
+    </motion.div>
   );
 };
 
