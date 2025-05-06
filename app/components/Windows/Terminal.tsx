@@ -4,6 +4,8 @@ import { useState, useRef, useEffect } from 'react';
 import { getUptimeOutput } from '@/util';
 import { useKeyboardShortcut } from '@/util/Hooks/useShortcut';
 import useAppWindows from '@/store/useAppWindows';
+import clsx from 'clsx';
+import useAppStore from '@/store';
 
 interface Line {
   command: string;
@@ -17,6 +19,7 @@ export default function Terminal() {
   const terminalRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const [historyIndex, setHistoryIndex] = useState(-1);
+  const { theme } = useAppStore();
 
   const { removeWindow } = useAppWindows();
 
@@ -159,26 +162,38 @@ export default function Terminal() {
   }, [terminalRef, inputRef]);
 
   return (
-    <div ref={terminalRef} className="flex-1 font-mono text-white text-sm rounded-lg p-2 overflow-y-auto">
+    <div ref={terminalRef} className="flex-1 font-mono text-sm rounded-lg p-2 overflow-y-auto">
       {lines.map((line, idx) => (
         <div key={idx} className="mb-1">
-          <span className="text-green-400 select-none">macbook@Fabiconcepts-Machine ~ %</span> {line.command}
+          <span className={clsx(
+            "select-none",
+            theme === "dark" ? "text-green-400" : "text-green-700"
+          )}>macbook@Fabiconcepts-Machine ~ %</span> {line.command}
           {line.output && (
-            <div className="text-gray-300 whitespace-pre-wrap">{line.output}</div>
+            <div className={clsx(
+              "whitespace-pre-wrap",
+              theme === "dark" ? "text-gray-300" : "text-gray-500"
+            )}>{line.output}</div>
           )}
         </div>
       ))}
 
       {/* Current prompt */}
       <div className="flex items-center">
-        <span className="text-green-400">macbook@Fabiconcepts-Machine ~ %</span>
+        <span className={clsx(
+            "select-none",
+            theme === "dark" ? "text-green-400" : "text-green-700"
+        )}>macbook@Fabiconcepts-Machine ~ %</span>
         <input
           autoFocus
           type="text"
           value={current}
           onChange={e => setCurrent(e.target.value)}
           onKeyDown={handleKeyDown}
-          className="bg-transparent outline-none ml-2 flex-1 text-white placeholder-gray-500"
+          className={clsx(
+            "bg-transparent outline-none ml-2 flex-1 placeholder-gray-500",
+            theme === "dark" ? "placeholder-gray-500 text-white" : "placeholder-gray-500 text-black"
+          )}
           placeholder=""
           ref={inputRef}
         />

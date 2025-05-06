@@ -1,10 +1,12 @@
 "use client";
+import useAppStore from "@/store";
+import clsx from "clsx";
 import { AlertCircle, LucideChevronDown, LucideSend } from "lucide-react";
 import { useMemo, useState } from "react";
-import gmailService from "@/util/GmailService";
 import toast from "react-hot-toast";
 
 export default function Mail() {
+    const { theme } = useAppStore()
     const [subject, setSubject] = useState('');
     const [from, setFrom] = useState('');
     const [message, setMessage] = useState('');
@@ -82,7 +84,10 @@ export default function Mail() {
         <div className="p-2 flex flex-col text-sm">
             <div className="flex items-center gap-2 border-b border-foreground/30 pb-1">
                 <span className="opacity-50">To:</span>
-                <span className="flex items-center gap-1 cursor-pointer py-0.5 px-1 bg-blue-50/20">
+                <span className={clsx(
+                        "flex items-center gap-1 rounded cursor-pointer py-0.5 px-1",
+                        theme === "dark"? "bg-blue-50/20" : "bg-blue-300/40"
+                    )}>
                     fabiconceptdev@gmail.com <LucideChevronDown size={15} />
                 </span>
             </div>

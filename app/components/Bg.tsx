@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { Righteous } from "next/font/google";
 import { useState, useMemo, useEffect } from "react";
 import { quotesByChar } from "@/constants";
-import { useTheme } from "next-themes";
+import useAppStore from "@/store";
 
 const righteous = Righteous({
     subsets: ["latin"],
@@ -15,13 +15,9 @@ const righteous = Righteous({
 interface BgProps { }
 
 export default function Bg({ }: BgProps) {
-    const { theme, setTheme } = useTheme();
+    const { theme } = useAppStore()
     const name = "FaVouR ToCHuKWu AJoKuBi";
     const nameArray = useMemo(() => name.split(""), [name]);
-
-    useEffect(() => {
-        setTheme("dark");
-    }, []);
 
     return (
         <div className="fixed inset-0">
@@ -30,20 +26,20 @@ export default function Bg({ }: BgProps) {
                 alt="bg"
                 fill
                 className={clsx(
-                    "dark:brightness-75 dark:-contrast-50",
+                    theme ==="dark" && "brightness-75 -contrast-50",
                 )}
             />
             <div className="absolute h-full w-full grid place-items-center">
                 <div className="text-center">
                     <h1 className={clsx(
                         righteous.className,
-                        "text-5xl font-normal drop-shadow-[0_0_2px_rgba(0,0,0,0.5)] flex justify-center flex-wrap"
+                        "text-5xl text-white font-normal drop-shadow-[0_0_2px_rgba(0,0,0,0.5)] flex justify-center flex-wrap"
                     )}>
                         {nameArray.map((char, index) => (
                             <CharacterSpan key={index} character={char} delay={index * 50} />
                         ))}
                     </h1>
-                    <p className="text-xl font-normal drop-shadow-[0_0_2px_rgba(0,0,0,0.5)] mt-4">
+                    <p className="text-xl text-white font-normal drop-shadow-[0_0_2px_rgba(0,0,0,0.5)] mt-4">
                         <span className="text-foreground/50">&quot;</span>
                         The one who stands at the pinnacle of all races
                         <span className="text-foreground/50">&quot;</span>

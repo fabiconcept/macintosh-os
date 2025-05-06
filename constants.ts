@@ -78,8 +78,8 @@ export const permanentIcons: IconProps[] = [
     {
         id: "per-icon-1",
         src: "/images/icons/download.png",
-        alt: "Download",
-        tooltip: "Download",
+        alt: "Downloads",
+        tooltip: "Projects",
         windowType: WindowType.Downloads,
     },
     {
@@ -349,5 +349,155 @@ export const launchpadApps: LaunchpadApp[] = [
         alt: "Safari",
         title: "Safari",
         url: "https://fabiconcept.online/",
+    }
+]
+
+interface TopArtist {
+    id: string;
+    src: string;
+    alt: string;
+    name: string;
+    url: string;
+}
+
+export const topArtists: TopArtist[] = [
+    {
+        id: "top-artist-1",
+        src: "/images/assets/kenny.jpeg",
+        alt: "Kungfu Kenny",
+        name: "Kendrick Lamar",
+        url: "https://open.spotify.com/artist/2YZyLoL8N0Wb9xBt1NhZWg?si=fdf007d859194725",
+    },
+    {
+        id: "top-artist-2",
+        src: "/images/assets/jev.jpeg",
+        alt: "Jev",
+        name: "Jev.",
+        url: "https://open.spotify.com/artist/6OmxkansdRyVTvo6BpZzKF?si=2e8744e7c03044b0",
+    },
+    {
+        id: "top-artist-3",
+        src: "/images/assets/don.jpeg",
+        alt: "Don",
+        name: "Don Toliver",
+        url: "https://open.spotify.com/artist/4Gso3d4CscCijv0lmajZWs?si=78eeddd2a6344e2d",
+    },
+    {
+        id: "top-artist-4",
+        src: "/images/assets/black.jpeg",
+        alt: "Black Sabbath",
+        name: "Black Sabbath",
+        url: "https://open.spotify.com/artist/5M52tdBnJaKSvOpJGz8mfZ?si=36559d566a074f2d"
+    },
+    {
+        id: "top-artist-5",
+        src: "/images/assets/rema.jpeg",
+        alt: "HIM",
+        name: "Rema",
+        url: "https://open.spotify.com/artist/46pWGuE3dSwY3bMMXGBvVS?si=b5d8260d8da2405d"
+    },
+    {
+        id: "top-artist-6",
+        src: "/images/assets/ye.jpeg",
+        alt: "Ye",
+        name: "Kanye West",
+        url: "https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x?si=743578ae6af2453b"
+    },
+    {
+        id: "top-artist-7",
+        src: "/images/assets/zay.jpeg",
+        alt: "Zay",
+        name: "Zay Dante",
+        url: "https://open.spotify.com/artist/6ZnL56xQE3lDTPRv6d0DIX?si=da981a43f4a644fd"
+    },
+    {
+        id: "top-artist-8",
+        src: "/images/assets/denzel.webp",
+        alt: "Denzel",
+        name: "Denzel Kurry",
+        url: "https://open.spotify.com/artist/6fxyWrfmjcbj5d12gXeiNV?si=76d25ec8d23d472b"
+    },
+    {
+        id: "top-artist-9",
+        src: "/images/assets/carti.jpeg",
+        alt: "Carti",
+        name: "Playboi Carti",
+        url: "https://open.spotify.com/artist/699OTQXzgjhIYAHMy9RyPD?si=efb750b7d60c49a3"
+    },
+    {
+        id: "top-artist-10",
+        src: "/images/assets/tyler.jpeg",
+        alt: "Tyler",
+        name: "Tyler, The Creator",
+        url: "https://open.spotify.com/artist/4V8LLVI7PbaPR0K2TGSxFF?si=f35e378d548743d1"
+    }
+]
+
+export interface Project {
+    id: string;
+    src: string;
+    alt: string;
+    name: string;
+    type: string;
+    url: string;
+    isFavorite?: boolean;
+}
+
+export const projects: Project[] = [
+    {
+        id: "project-1",
+        src: "https://pickholder.sirv.com/Images/aism.png",
+        alt: "AISM",
+        name: "American International School of Medicine",
+        type: "Education",
+        url: "https://aism-edu.vercel.app/",
+    },
+    {
+        id: "project-2",
+        src: "https://pickholder.sirv.com/Images/thumbnail-main.png",
+        alt: "Secret room",
+        name: "Secret Room",
+        type: "Personal Project",
+        url: "https://secret-room-orpin.vercel.app",
+    },
+    {
+        id: "project-3",
+        src: "https://pickholder.sirv.com/Images/photobooth.png",
+        alt: "Photobooth",
+        name: "Photobooth",
+        type: "Personal Project",
+        url: "https://photobooth-alpha.vercel.app",
+    },
+    {
+        id: "project-4",
+        src: "https://pickholder.sirv.com/Images/my-linktree.png",
+        alt: "My Linktree",
+        name: "My Linktree",
+        type: "Personal Project",
+        url: "https://mylinks.fabiconcept.online",
+    },
+    {
+        id: "project-5",
+        src: "https://pickholder.sirv.com/Images/Screenshot%202025-04-07%20at%2010.54.35.png",
+        alt: "Weather App",
+        name: "Weather App",
+        type: "Personal Project",
+        url: "https://weather-app-esa.vercel.app",
+    },
+    {
+        id: "project-6",
+        src: "https://pickholder.sirv.com/Images/Web%20capture_16-12-2023_14436_localhost.jpeg",
+        alt: "Website",
+        name: "Wilkinson & Regis Website Project",
+        type: "Website",
+        url: "https://landing-page-7cc2.vercel.app/",
+    },
+    {
+        id: "project-7",
+        src: "https://pickholder.sirv.com/Images/Web%20capture_26-6-2023_21655_www.offrcloud.com.jpeg",
+        alt: "Website",
+        name: "Offrcloud Website Project",
+        type: "Website",
+        url: "https://landing-page-7cc2.vercel.app/",
     }
 ]

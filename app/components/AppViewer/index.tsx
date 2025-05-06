@@ -1,5 +1,7 @@
 // AppViewerContext.tsx
 "use client";
+import useAppWindows from "@/store/useAppWindows";
+import clsx from "clsx";
 import React, { createContext, useContext, useEffect, useRef, useState } from "react";
 
 interface AppViewerContextValues {
@@ -16,6 +18,7 @@ export const useAppViewer = () => {
 
 export const AppViewerProvider = ({ children }: { children: React.ReactNode }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { windows } = useAppWindows();
   const [containerDimensions, setContainerDimensions] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
@@ -29,7 +32,10 @@ export const AppViewerProvider = ({ children }: { children: React.ReactNode }) =
 
   return (
     <AppViewerContext.Provider value={{ containerDimensions }}>
-      <div className="fixed top-0 left-0 h-screen w-screen">
+      <div className={clsx(
+          "fixed top-0 left-0 h-screen w-screen",
+          windows.filter((window) => !window.isMinimized).length > 0 ? "" : "pointer-events-none"
+        )}>
         <div className="relative h-full w-full" ref={containerRef}>
           {children}
         </div>

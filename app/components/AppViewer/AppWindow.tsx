@@ -18,6 +18,7 @@ import Terminal from '../Windows/Terminal';
 import clsx from 'clsx';
 import Mail from '../Windows/Mail';
 import Setting from '../Windows/Setting';
+import Projects from '../Windows/Projects';
 
 
 const EDGE_PADDING = 0;
@@ -88,6 +89,8 @@ const DraggableBox = ({
         return <Mail />;
       case 'settings':
         return <Setting />;
+      case 'downloads':
+        return <Projects />;
       default:
         return <div>Window not found</div>;
     }
@@ -148,7 +151,7 @@ const DraggableBox = ({
       {windowProps.windowType !== 'terminal' ? <motion.div
             initial={{ opacity: 0, scale: 2 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.35, delay: 0.15, ease: "easeOut" }}
+            transition={{ duration: 0.15, delay: 0.05, ease: "easeOut" }}
             className='p-2 max-h-full overflow-y-auto launchpad-container pb-4 flex-1'
         >
         <WindowToRender />
@@ -222,6 +225,7 @@ const DraggableContainer = ({ windowProps }: { windowProps: AppWindow }) => {
       initial="hidden"
       animate="visible"
       exit="exit"
+      transition={{ duration: 0.15, ease: "easeOut" }}
       variants={variants}
     >
       <DndContext sensors={sensors} onDragEnd={handleDragEnd}>

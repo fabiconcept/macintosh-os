@@ -71,7 +71,7 @@ export default function Icon({
 
             <div
                 className={clsx(
-                    "absolute -top-[3.25rem] left-1/2 -translate-x-1/2 border rounded-md px-3 py-0.5 inset-shadow-[0_0_0_0.5px] inset-shadow-foreground/30 group-hover:opacity-100 group-active:opacity-0 opacity-0 transition-all duration-300",
+                    "absolute -top-[3.25rem] pointer-events-none left-1/2 -translate-x-1/2 border rounded-md px-3 py-0.5 inset-shadow-[0_0_0_0.5px] inset-shadow-foreground/30 group-hover:opacity-100 group-active:opacity-0 opacity-0 transition-all duration-300",
                     theme === "dark" && "border-background/80 bg-[#252525]",
                     theme === "light" && "border-foreground/30 bg-[#d8d8d8]"
                 )}
@@ -90,7 +90,7 @@ export default function Icon({
             </div>
 
             {isWindowOpen && <div
-                className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 h-1 w-1 rounded-full bg-foreground/70"
+                className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 h-1 w-1 rounded-full bg-white/70"
             />}
         </div>
     )

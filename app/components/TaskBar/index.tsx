@@ -116,7 +116,7 @@ export default function TaskBar() {
     };
 
     return (
-        <div className="fixed bottom-2 p-2 left-1/2 z-[999] -translate-x-1/2 rounded-3xl border border-foreground/10 bg-foreground/10 backdrop-blur-sm">
+        <div className="fixed bottom-2 p-2 left-1/2 z-[999] -translate-x-1/2 rounded-3xl border border-white/10 bg-white/10 backdrop-blur-sm">
             <div className="flex items-stretch gap-2">
                 <DndContext
                     sensors={sensors}
@@ -146,7 +146,7 @@ export default function TaskBar() {
                     )}
                 </DndContext>
                 <div
-                    className="w-[1px] mx-2 bg-foreground/10"
+                    className="w-[1px] mx-2 bg-white/20"
                 />
                 <div className="flex items-center gap-2">
                     {permanentIcons.map((icon) => (

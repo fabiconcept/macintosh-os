@@ -7,15 +7,33 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Header() {
-    const { theme, timeFormat } = useAppStore();
-    const [time, setTime] = useState(new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }));
+    const { timeFormat } = useAppStore();
+    const [time, setTime] = useState(() => {
+        if (timeFormat === "12") {
+            return new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        } else {
+            return new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
+        }
+    });
+
+    useEffect(() => {
+        if (timeFormat === "12") {
+            setTime(new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }));
+        } else {
+            setTime(new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false }));
+        }
+    }, [timeFormat]);
 
     useEffect(() => {
         const timer = setInterval(() => {
-            setTime(new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }));
+            if (timeFormat === "12") {
+                setTime(new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }));
+            } else {
+                setTime(new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false }));
+            }
         }, 1000);
         return () => clearInterval(timer);
-    }, []);
+    }, [timeFormat]);
 
     return (
         <div 
@@ -32,7 +50,7 @@ export default function Header() {
                     title="Go to my main website" 
                     className="flex items-center gap-2 group"
                 >
-                    <div className="h-7 w-7 rounded-full grid place-items-center text-foreground bg-gradient-to-b from-blue-500 via-blue-600 to-blue-700">
+                    <div className="h-7 w-7 rounded-full grid place-items-center text-white bg-gradient-to-b from-blue-500 via-blue-600 to-blue-700">
                         <span className="drop-shadow-md inset-shadow text-sm font-semibold">FA</span>
                     </div>
                     <p className={clsx(
