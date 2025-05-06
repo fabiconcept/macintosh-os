@@ -11,7 +11,10 @@ interface AppState {
 
 const useAppStore = create<AppState>((set) => ({
     theme: "dark",
-    setTheme: (theme) => set({ theme }),
+    setTheme: (theme) => {
+        set({ theme });
+        
+    },
     timeFormat: "24",
     setTimeFormat: (timeFormat) => set({ timeFormat }),
     allowCookies: false,
