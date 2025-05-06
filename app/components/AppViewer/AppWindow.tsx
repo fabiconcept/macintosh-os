@@ -16,6 +16,8 @@ import LaunchPad from '../Windows/LaunchPad';
 import { motion } from 'framer-motion';
 import Terminal from '../Windows/Terminal';
 import clsx from 'clsx';
+import Mail from '../Windows/Mail';
+import Setting from '../Windows/Setting';
 
 
 const EDGE_PADDING = 0;
@@ -82,6 +84,10 @@ const DraggableBox = ({
         return <LaunchPad />;
       case 'terminal':
         return <Terminal />;
+      case 'mail':
+        return <Mail />;
+      case 'settings':
+        return <Setting />;
       default:
         return <div>Window not found</div>;
     }
@@ -95,12 +101,12 @@ const DraggableBox = ({
   return (
     <div
       ref={setNodeRef}
-      className="fixed z-50 w-[550px] h-[400px] bg-background/70 backdrop-blur-md shadow-xl border border-foreground/30 rounded-2xl overflow-hidden flex flex-col"
+      className="fixed z-50 w-[550px] h-[400px] bg-background/80 backdrop-blur-md shadow-xl border border-foreground/30 rounded-2xl overflow-hidden flex flex-col"
       style={style}
       onClick={() => reorderToTop(windowProps.id)}
     >
       <div
-        className="handle cursor-move p-2 font-semibold rounded-t-lg relative border-b border-foreground/30 w-full"
+        className="handle cursor-move p-2 font-semibold rounded-t-lg relative border-b border-foreground/30 w-full z-10 bg-background/20"
       >
         <div className='flex items-center gap-1 absolute top-1/2 -translate-y-1/2 left-3 group'>
           <div
@@ -143,7 +149,7 @@ const DraggableBox = ({
             initial={{ opacity: 0, scale: 2 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.35, delay: 0.15, ease: "easeOut" }}
-            className='p-2 max-h-full overflow-y-auto launchpad-container pb-16 flex-1'
+            className='p-2 max-h-full overflow-y-auto launchpad-container pb-4 flex-1'
         >
         <WindowToRender />
       </motion.div> : <><WindowToRender /></>}
