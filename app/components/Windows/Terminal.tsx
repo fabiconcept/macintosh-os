@@ -162,7 +162,7 @@ export default function Terminal() {
     <div ref={terminalRef} className="flex-1 font-mono text-white text-sm rounded-lg p-2 overflow-y-auto">
       {lines.map((line, idx) => (
         <div key={idx} className="mb-1">
-          <span className="text-green-400">macbook@Fabiconcepts-Machine ~ %</span> {line.command}
+          <span className="text-green-400 select-none">macbook@Fabiconcepts-Machine ~ %</span> {line.command}
           {line.output && (
             <div className="text-gray-300 whitespace-pre-wrap">{line.output}</div>
           )}

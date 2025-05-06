@@ -1,10 +1,10 @@
 "use client";
 import Image from "next/image";
-import useAppStore from "@/store";
 import clsx from "clsx";
 import { Righteous } from "next/font/google";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { quotesByChar } from "@/constants";
+import { useTheme } from "next-themes";
 
 const righteous = Righteous({
     subsets: ["latin"],
@@ -15,18 +15,22 @@ const righteous = Righteous({
 interface BgProps { }
 
 export default function Bg({ }: BgProps) {
-    const { theme } = useAppStore();
+    const { theme, setTheme } = useTheme();
     const name = "FaVouR ToCHuKWu AJoKuBi";
     const nameArray = useMemo(() => name.split(""), [name]);
+
+    useEffect(() => {
+        setTheme("dark");
+    }, []);
 
     return (
         <div className="fixed inset-0">
             <Image
-                src="/images/bg.jpg"
+                src="/images/macos-monterey.jpg"
                 alt="bg"
                 fill
                 className={clsx(
-                    theme === "dark" && "brightness-50 -contrast-50",
+                    "dark:brightness-75 dark:-contrast-50",
                 )}
             />
             <div className="absolute h-full w-full grid place-items-center">
