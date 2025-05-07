@@ -3,7 +3,7 @@
 import clsx from "clsx";
 import Image from "next/image";
 import useAppStore from "@/store";
-import { BOX_HEIGHT, BOX_WIDTH, IconProps } from "@/constants";
+import { BOX_HEIGHT, BOX_WIDTH, IconProps } from "@/Constants/constants";
 import useAppWindows from "@/store/useAppWindows";
 
 export default function Icon({

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Icon from "./Icon";
-import { IconProps, icons, permanentIcons } from "@/constants";
+import { IconProps, icons, permanentIcons } from "@/Constants/constants";
 import {
     DndContext,
     closestCenter,

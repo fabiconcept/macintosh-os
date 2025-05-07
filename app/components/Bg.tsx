@@ -2,8 +2,8 @@
 import Image from "next/image";
 import clsx from "clsx";
 import { Righteous } from "next/font/google";
-import { useState, useMemo, useEffect } from "react";
-import { quotesByChar } from "@/constants";
+import { useState, useMemo } from "react";
+import { quotesByChar } from "@/Constants/constants";
 import useAppStore from "@/store";
 
 const righteous = Righteous({

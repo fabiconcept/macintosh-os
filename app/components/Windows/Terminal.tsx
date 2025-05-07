@@ -1,5 +1,5 @@
 "use client";
-import { launchpadApps } from '@/constants';
+import { launchpadApps } from '@/Constants/constants';
 import { useState, useRef, useEffect } from 'react';
 import { getUptimeOutput } from '@/util';
 import { useKeyboardShortcut } from '@/util/Hooks/useShortcut';

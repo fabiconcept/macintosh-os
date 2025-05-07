@@ -12,3 +12,26 @@ export const getUptimeOutput = (): string => {
   
     return `${formattedStart}  up ${days} days,  ${hours}:${minutes.toString().padStart(2, '0')}, 3 users, load averages: 2.12 2.34 2.15`;
   };
+
+  export const downloadHandler = async ({
+    fileUrl,
+    fileName
+}: {
+    fileUrl: string;
+    fileName: string;
+}) => {
+    const imageRes = await fetch(fileUrl);
+
+    if (!imageRes.ok) return;
+
+    const imageBlob = await imageRes.blob();
+    const imageOutputUrl = URL.createObjectURL(imageBlob);
+
+    const linkElement = document.createElement("a");
+    linkElement.href = imageOutputUrl;
+    linkElement.setAttribute("download", `${fileName.replace(/\W/g, '_')}`);
+    
+    document.body.appendChild(linkElement);
+    linkElement.click();
+    document.body.removeChild(linkElement);
+};   

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Righteous } from "next/font/google";
 import clsx from "clsx";
-import { topArtists } from "@/constants";
+import { topArtists } from "@/Constants/artists";
 import { Play } from "lucide-react";
 import Link from "next/link";
 

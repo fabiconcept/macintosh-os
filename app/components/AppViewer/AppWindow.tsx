@@ -9,7 +9,7 @@ import {
   DragEndEvent,
 } from '@dnd-kit/core';
 import useAppWindows, { AppWindow } from '@/store/useAppWindows';
-import { BOX_HEIGHT, BOX_WIDTH } from '@/constants';
+import { BOX_HEIGHT, BOX_WIDTH } from '@/Constants/constants';
 import { LucideMaximize2, LucideMinus, LucideX } from 'lucide-react';
 import Spotify from '../Windows/Spotify';
 import LaunchPad from '../Windows/LaunchPad';
@@ -20,6 +20,8 @@ import Mail from '../Windows/Mail';
 import Setting from '../Windows/Setting';
 import Projects from '../Windows/Projects';
 import Photos from '../Windows/Photos';
+import Finder from '../Windows/Finder';
+import Bin from '../Windows/Bin';
 
 
 const EDGE_PADDING = 0;
@@ -94,6 +96,10 @@ const DraggableBox = ({
         return <Projects />;
       case 'photos':
         return <Photos />;
+      case 'finder':
+        return <Finder />;
+      case 'bin':
+        return <Bin />;
       default:
         return <div>Window not found</div>;
     }

@@ -1,4 +1,4 @@
-import { WindowType } from "@/constants";
+import { WindowType } from "@/Constants/constants";
 import { create } from "zustand";
 
 

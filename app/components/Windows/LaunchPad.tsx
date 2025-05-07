@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { launchpadApps } from "@/constants";
+import { launchpadApps } from "@/Constants/constants";
 import Link from "next/link";
 
 export default function LaunchPad() {

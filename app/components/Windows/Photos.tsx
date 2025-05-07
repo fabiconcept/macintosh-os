@@ -1,7 +1,7 @@
-import { Globe, Globe2, Instagram, Link2 } from "lucide-react";
+import { Globe, Instagram } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { cssArt, graphicDesign } from "@/constants";
+import { cssArt, graphicDesign } from "@/Constants/art";
 import clsx from "clsx";
 
 export default function Photos() {

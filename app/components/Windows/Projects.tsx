@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { projects } from "@/constants";
+import { projects } from "@/Constants/projects";
 import Link from "next/link";
 
 export default function Projects() {
