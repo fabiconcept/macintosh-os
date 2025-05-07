@@ -65,8 +65,7 @@ function CharacterSpan({ character, delay }: CharacterSpanProps) {
     return (
         <span
             className={clsx(
-                "relative cursor-pointer transition-all duration-300",
-                isHovered ? "text-primary scale-125" : ""
+                "relative cursor-pointer transition-all duration-300"
             )}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}

@@ -19,7 +19,7 @@ export default function Terminal() {
   const terminalRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const [historyIndex, setHistoryIndex] = useState(-1);
-  const { theme } = useAppStore();
+  const { theme, setTheme } = useAppStore();
 
   const { removeWindow } = useAppWindows();
 
@@ -111,6 +111,10 @@ export default function Terminal() {
     if (normalizedCmd === 'uname -n') return 'MacBook-Pro.local';
     if (normalizedCmd === 'uname -r') return '23.4.0';
     if (normalizedCmd === 'uname -m') return 'x86_64';
+    if (normalizedCmd === `osascript -e 'tell app "system events" to tell appearance preferences to set dark mode to not dark mode'`) {
+      setTheme(theme === 'dark' ? 'light' : 'dark');
+      return 'Theme changed to ' + theme;
+    }
 
     // Terminal control commands
     if (normalizedCmd === 'clear') {
@@ -335,7 +339,7 @@ export default function Terminal() {
   }, [terminalRef, inputRef]);
 
   return (
-    <div ref={terminalRef} className="flex-1 font-mono text-sm rounded-lg p-2 overflow-y-auto">
+    <div ref={terminalRef} className="flex-1 font-mono text-sm rounded-lg p-2 overflow-y-auto bg-background/20">
       {lines.map((line, idx) => (
         <div key={idx} className="mb-1">
           <span className={clsx(
@@ -364,7 +368,7 @@ export default function Terminal() {
           onChange={e => setCurrent(e.target.value)}
           onKeyDown={handleKeyDown}
           className={clsx(
-            "bg-transparent outline-none ml-2 flex-1 placeholder-gray-500",
+            "bg-transparent outline-none ml-2 flex-1 placeholder-gray-500 whitespace-pre-wrap",
             theme === "dark" ? "placeholder-gray-500 text-white" : "placeholder-gray-500 text-black"
           )}
           placeholder=""
