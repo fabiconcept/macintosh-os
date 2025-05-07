@@ -1,32 +1,50 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 
 export default function MobileViewNotice() {
+    const imageRef = useRef<HTMLImageElement>(null);
+
+    useEffect(() => {
+        if (!imageRef.current) return;
+        // Preload the GIF using the browser's Image API
+        const preloadGif = document.createElement('img');
+        preloadGif.src = "/demo.gif";
+        
+        // When the GIF is loaded, set the state to show it
+        preloadGif.onload = () => {
+            if (!imageRef.current) return;
+            imageRef.current.src = "/demo.gif";
+            imageRef.current.srcset = "/demo.gif";
+        };
+    }, [imageRef]);
+
     return (
         <div className="min-[767px]:hidden min-h-[100dvh] flex flex-col">
             <div className="m-5 h-7 w-7 rounded-full grid place-items-center shadow-[0px_0px_5px] shadow-foreground/25 text-white bg-gradient-to-b from-blue-500 via-blue-600 to-blue-700">
                 <span className="drop-shadow-md inset-shadow text-sm font-semibold">FA</span>
             </div>
 
-            <div className="m-5 mt-10 max-w-xl self-center rounded-2xl overflow-hidden shadow-[0px_5px_25px] shadow-foreground/10 border border-foreground/20">
+            <div className="m-5 mt-10 max-w-xl self-center rounded-2xl overflow-hidden shadow-[0px_5px_25px] shadow-foreground/10 border border-foreground/20 relative">
                 <Image
-                    src="https://pickholder.sirv.com/Images/og-image.png"
-                    alt="bg"
-                    width={500}
-                    height={500}
-                    onContextMenu={(e) => {
-                        e.preventDefault();  
-                    }}
-                    onContextMenuCapture={(e) => {
-                        e.preventDefault();
-                    }}
-                    placeholder="blur"
-                    blurDataURL="https://pickholder.sirv.com/Images/og-image.png"
-                    draggable={false}
-                    priority
-                    className="object-cover w-full h-auto"
-                />
+                        src="https://pickholder.sirv.com/Images/og-image.png"
+                        ref={imageRef}
+                        alt="bg"
+                        width={500}
+                        height={500}
+                        onContextMenu={(e) => {
+                            e.preventDefault();  
+                        }}
+                        onContextMenuCapture={(e) => {
+                            e.preventDefault();
+                        }}
+                        placeholder="blur"
+                        blurDataURL="/demo.gif"
+                        draggable={false}
+                        priority
+                        className="object-cover min-w-full min-h-full"
+                    />
             </div>
 
             <div className="mt-5 text-center px-10">
@@ -61,9 +79,9 @@ export default function MobileViewNotice() {
                         />
                         <span className="text-white">fabiconcept.online</span>
                     </div>
-                    <div className="h-[1px] ml-2 flex-1 bg-foreground/10 group-hover:bg-foreground/25 transition-all duration-300"></div>
-                    <div className="h-7 w-7 rounded-full grid place-items-center bg-foreground/10 group-hover:bg-foreground/25 transition-all duration-300 group-hover:-rotate-12 group-active:scale-95 group-active:rotate-12">
-                        <ArrowRight size={20} />
+                    <div className="h-[1px] ml-2 flex-1 bg-white/10 group-hover:bg-white/25 transition-all duration-300"></div>
+                    <div className="h-7 w-7 rounded-full grid place-items-center bg-white/10 group-hover:bg-white/25 transition-all duration-300 group-hover:-rotate-12 group-active:scale-95 group-active:rotate-12">
+                        <ArrowRight size={20} className="text-white" />
                     </div>
                 </Link>
             </div>
