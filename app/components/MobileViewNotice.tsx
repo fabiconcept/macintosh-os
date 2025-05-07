@@ -22,9 +22,9 @@ export default function MobileViewNotice() {
 
     return (
         <div className="min-[767px]:hidden min-h-[100dvh] flex flex-col">
-            <div className="m-5 h-10 w-10 rounded-full grid place-items-center shadow-[0px_0px_5px] shadow-foreground/25 text-white bg-gradient-to-b from-blue-500 via-blue-600 to-blue-700">
+            <Link href="https://fabiconcept.online" target="_self" rel="noopener noreferrer" className="m-5 h-10 w-10 rounded-full grid place-items-center shadow-[0px_0px_5px] shadow-foreground/25 text-white bg-gradient-to-b from-blue-500 via-blue-600 to-blue-700">
                 <span className="drop-shadow-md inset-shadow text-sm font-semibold">FA</span>
-            </div>
+            </Link>
 
             <div className="m-5 mt-10 max-w-xl self-center rounded-2xl overflow-hidden shadow-[0px_5px_25px] shadow-foreground/10 border border-foreground/20 relative">
                 <Image
