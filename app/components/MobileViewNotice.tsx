@@ -68,9 +68,9 @@ export default function MobileViewNotice() {
                 </Link>
             </div>
 
-            <div className="mt-20 flex-1" />
+            <div className="mt-10 flex-1" />
 
-            <p className="text-sm text-foreground/50 p-5">© {new Date().getFullYear()} Favour Ajokubi. All rights reserved.</p>
+            <p className="text-sm text-foreground/50 p-5 text-center">© {new Date().getFullYear()} Favour Ajokubi. All rights reserved.</p>
         </div>
     )
 }
