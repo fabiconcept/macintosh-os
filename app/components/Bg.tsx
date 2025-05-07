@@ -5,6 +5,7 @@ import { Righteous } from "next/font/google";
 import { useState, useMemo } from "react";
 import { quotesByChar } from "@/Constants/constants";
 import useAppStore from "@/store";
+import { motion } from "framer-motion";
 
 const righteous = Righteous({
     subsets: ["latin"],
@@ -41,19 +42,27 @@ export default function Bg({ }: BgProps) {
             />
             <div className="absolute h-full w-full grid place-items-center">
                 <div className="text-center">
-                    <h1 className={clsx(
-                        righteous.className,
-                        "text-5xl text-white font-normal drop-shadow-[0_0_2px_rgba(0,0,0,0.5)] flex justify-center flex-wrap"
-                    )}>
+                    <motion.h1
+                        initial={{ opacity: 0, y: -100 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.15, type: "spring", stiffness: 100, damping: 10 }}
+                        className={clsx(
+                            righteous.className,
+                            "text-5xl text-white font-normal drop-shadow-[0_0_2px_rgba(0,0,0,0.5)] flex justify-center flex-wrap"
+                        )}>
                         {nameArray.map((char, index) => (
                             <CharacterSpan key={index} character={char} delay={index * 50} />
                         ))}
-                    </h1>
-                    <p className="text-xl text-white font-normal drop-shadow-[0_0_2px_rgba(0,0,0,0.5)] mt-4">
+                    </motion.h1>
+                    <motion.p
+                        initial={{ opacity: 0, y: 100 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.25, type: "spring", stiffness: 100, damping: 10 }}
+                        className="text-xl text-white font-normal drop-shadow-[0_0_2px_rgba(0,0,0,0.5)] mt-4">
                         <span className="text-foreground/50">&quot;</span>
                         The one who stands at the pinnacle of all races
                         <span className="text-foreground/50">&quot;</span>
-                    </p>
+                    </motion.p>
                 </div>
             </div>
         </div>

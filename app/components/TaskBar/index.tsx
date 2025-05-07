@@ -24,6 +24,7 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { createPortal } from "react-dom";
+import { motion } from "framer-motion";
 
 // Create a sortable version of your Icon component
 const SortableIcon = ({ id, ...props }: IconProps & { id: string }) => {
@@ -116,7 +117,11 @@ export default function TaskBar() {
     };
 
     return (
-        <div className="fixed bottom-2 p-2 left-1/2 z-[999] -translate-x-1/2 rounded-3xl border border-white/10 bg-white/10 backdrop-blur-sm">
+        <motion.div
+            initial={{ opacity: 0, y: "100%" }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.25, type: "spring", stiffness: 100, damping: 10, delay: 0.5 }}
+            className="fixed bottom-2 p-2 left-1/2 z-[999] -translate-x-1/2 rounded-3xl border border-white/10 bg-white/10 backdrop-blur-sm">
             <div className="flex items-stretch gap-2">
                 <DndContext
                     sensors={sensors}
@@ -154,6 +159,6 @@ export default function TaskBar() {
                     ))}
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }

@@ -5,6 +5,8 @@ import clsx from "clsx";
 import { LucideMail } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+
 
 export default function Header() {
     const { timeFormat } = useAppStore();
@@ -37,7 +39,10 @@ export default function Header() {
     }, [timeFormat]);
 
     return (
-        <div 
+        <motion.div
+            initial={{ opacity: 0, y: "-100%" }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.25 }}
             className={clsx(
                 "fixed top-0 left-0 z-[999] w-[100dvw] py-2 px-10 backdrop-blur-lg",
                 "bg-background/50 border-b border-foreground/30"
@@ -81,6 +86,6 @@ export default function Header() {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
