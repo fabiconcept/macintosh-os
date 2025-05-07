@@ -1,7 +1,8 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
 export default function MobileViewNotice() {
     const imageRef = useRef<HTMLImageElement>(null);
@@ -11,7 +12,7 @@ export default function MobileViewNotice() {
         // Preload the GIF using the browser's Image API
         const preloadGif = document.createElement('img');
         preloadGif.src = "/demo.gif";
-        
+
         // When the GIF is loaded, set the state to show it
         preloadGif.onload = () => {
             if (!imageRef.current) return;
@@ -22,19 +23,30 @@ export default function MobileViewNotice() {
 
     return (
         <div className="min-[767px]:hidden min-h-[100dvh] flex flex-col">
-            <Link href="https://fabiconcept.online" target="_self" rel="noopener noreferrer" className="m-5 h-10 w-10 rounded-full grid place-items-center shadow-[0px_0px_5px] shadow-foreground/25 text-white bg-gradient-to-b from-blue-500 via-blue-600 to-blue-700">
-                <span className="drop-shadow-md inset-shadow text-sm font-semibold">FA</span>
-            </Link>
+            <motion.div
+                initial={{ opacity: 0, x: "100%" }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.25, type: "spring", stiffness: 100, damping: 10, delay: 0.25 }}
+            >
+                <Link href="https://fabiconcept.online" target="_self" rel="noopener noreferrer" className="m-5 h-10 w-10 rounded-full grid place-items-center shadow-[0px_0px_5px] shadow-foreground/25 text-white bg-gradient-to-b from-blue-500 via-blue-600 to-blue-700">
+                    <span className="drop-shadow-md inset-shadow text-sm font-semibold">FA</span>
+                </Link>
+            </motion.div>
 
-            <div className="m-5 mt-10 max-w-xl self-center rounded-2xl overflow-hidden shadow-[0px_5px_25px] shadow-foreground/10 border border-foreground/20 relative">
-                <Image
+            <motion.div
+                initial={{ opacity: 0, y: -50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25, type: "spring", stiffness: 100, damping: 10, delay: 0.25 }}
+            >
+                <div className="m-5 mt-10 max-w-xl self-center rounded-2xl overflow-hidden shadow-[0px_5px_25px] shadow-foreground/10 border border-foreground/20 relative">
+                    <Image
                         src="https://pickholder.sirv.com/Images/og-image.png"
                         ref={imageRef}
                         alt="bg"
                         width={500}
                         height={500}
                         onContextMenu={(e) => {
-                            e.preventDefault();  
+                            e.preventDefault();
                         }}
                         onContextMenuCapture={(e) => {
                             e.preventDefault();
@@ -45,14 +57,22 @@ export default function MobileViewNotice() {
                         priority
                         className="object-cover min-w-full min-h-full"
                     />
-            </div>
+                </div>
+            </motion.div>
 
-            <div className="mt-5 text-center px-10">
-                <h1 className="text-2xl font-semibold leading-[1.2] mb-2">Not available on smaller screens 😓</h1>
-                <p className="text-sm text-foreground/50">View full portfolio on the mobile version 👇</p>
-            </div>
+            <motion.div
+                initial={{ opacity: 0, y: -50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25, type: "spring", stiffness: 100, damping: 10, delay: 0.25 }}
+            >
+                <div className="mt-5 text-center px-10">
+                    <h1 className="text-2xl font-semibold leading-[1.2] mb-2">Not available on smaller screens 😓</h1>
+                    <p className="text-sm text-foreground/50">View full portfolio on the mobile version 👇</p>
+                </div>
+            </motion.div>
 
-            <div className="px-5">
+
+            <motion.div className="px-5">
                 <Link
                     href="https://fabiconcept.online"
                     target="_blank"
@@ -66,7 +86,7 @@ export default function MobileViewNotice() {
                             width={50}
                             height={50}
                             onContextMenu={(e) => {
-                                e.preventDefault();  
+                                e.preventDefault();
                             }}
                             onContextMenuCapture={(e) => {
                                 e.preventDefault();
@@ -84,11 +104,16 @@ export default function MobileViewNotice() {
                         <ArrowRight size={20} className="text-white" />
                     </div>
                 </Link>
-            </div>
+            </motion.div>
 
             <div className="mt-5 flex-1" />
 
-            <p className="text-sm text-foreground/50 p-5 text-center">© {new Date().getFullYear()} Favour Ajokubi. All rights reserved.</p>
+            <motion.p
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25, type: "spring", stiffness: 100, damping: 10, delay: 0.25 }}
+                className="text-sm text-foreground/50 p-5 text-center"
+            >© {new Date().getFullYear()} Favour Ajokubi. All rights reserved.</motion.p>
         </div>
     )
 }
