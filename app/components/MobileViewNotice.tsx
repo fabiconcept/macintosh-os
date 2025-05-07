@@ -22,7 +22,7 @@ export default function MobileViewNotice() {
                         e.preventDefault();
                     }}
                     placeholder="blur"
-                    blurDataURL="/images/assets/70838932.jpeg"
+                    blurDataURL="https://pickholder.sirv.com/Images/og-image.png"
                     draggable={false}
                     priority
                     className="object-cover w-full h-auto"
@@ -30,7 +30,7 @@ export default function MobileViewNotice() {
             </div>
 
             <div className="mt-5 text-center px-10">
-                <h1 className="text-2xl font-semibold">Not available on smaller screens 😓</h1>
+                <h1 className="text-2xl font-semibold leading-[1.2] mb-2">Not available on smaller screens 😓</h1>
                 <p className="text-sm text-foreground/50">View full portfolio on the mobile version 👇</p>
             </div>
 
@@ -68,7 +68,7 @@ export default function MobileViewNotice() {
                 </Link>
             </div>
 
-            <div className="mt-20 flex items-end p-5 justify-center">
+            <div className="mt-20 flex-1 items-end p-5 justify-center">
                 <p className="text-sm text-foreground/50">© {new Date().getFullYear()} Favour Ajokubi. All rights reserved.</p>
             </div>
         </div>
