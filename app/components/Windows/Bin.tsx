@@ -31,6 +31,12 @@ export default function Bin() {
                             height={250}
                             draggable={false}
                             priority
+                            onContextMenu={(e) => {
+                                e.preventDefault();  
+                            }}
+                            onContextMenuCapture={(e) => {
+                                e.preventDefault();
+                            }}
                             placeholder="blur"
                             blurDataURL={item.icon}
                             className="object-contain w-full h-full"

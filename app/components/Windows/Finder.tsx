@@ -60,6 +60,12 @@ export default function Finder() {
                     <Image
                         src="/images/assets/70838932.jpeg"
                         alt="spotify"
+                        onContextMenu={(e) => {
+                            e.preventDefault();  
+                        }}
+                        onContextMenuCapture={(e) => {
+                            e.preventDefault();
+                        }}
                         width={500}
                         height={500}
                         priority
@@ -99,6 +105,12 @@ export default function Finder() {
                                 width={100}
                                 height={100}
                                 priority
+                                onContextMenu={(e) => {
+                                    e.preventDefault();  
+                                }}
+                                onContextMenuCapture={(e) => {
+                                    e.preventDefault();
+                                }}
                                 placeholder="blur"
                                 blurDataURL={language.icon}
                                 className="h-6 w-auto object-contain drop-shadow-[0px_0px_2.5px_rgba(255,255,255,0.25)]"

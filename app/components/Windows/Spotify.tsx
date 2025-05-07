@@ -22,6 +22,12 @@ export default function Spotify() {
                     width={100}
                     priority
                     placeholder="blur"
+                    onContextMenu={(e) => {
+                        e.preventDefault();  
+                    }}
+                    onContextMenuCapture={(e) => {
+                        e.preventDefault();
+                    }}
                     blurDataURL="/images/assets/ab6775700000ee8506ab9e5f16d551fa2e4c59d2.jpeg"
                     height={100}
                     className="rounded-full shadow-[0px_5px_25px_rgba(0,0,0,0.35)] relative z-10"
@@ -44,6 +50,12 @@ export default function Spotify() {
                                     alt={artist.alt}
                                     width={100}
                                     priority
+                                    onContextMenu={(e) => {
+                                        e.preventDefault();  
+                                    }}
+                                    onContextMenuCapture={(e) => {
+                                        e.preventDefault();
+                                    }}
                                     placeholder="blur"
                                     blurDataURL={artist.src}
                                     height={100}

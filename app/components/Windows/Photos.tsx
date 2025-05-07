@@ -20,6 +20,12 @@ export default function Photos() {
                                     height={250}
                                     draggable={false}
                                     priority
+                                    onContextMenu={(e) => {
+                                        e.preventDefault();  
+                                    }}
+                                    onContextMenuCapture={(e) => {
+                                        e.preventDefault();
+                                    }}
                                     placeholder="blur"
                                     blurDataURL={design.src}
                                     className="object-cover w-full h-full"
@@ -51,6 +57,12 @@ export default function Photos() {
                                     height={250}
                                     draggable={false}
                                     priority
+                                    onContextMenu={(e) => {
+                                        e.preventDefault();  
+                                    }}
+                                    onContextMenuCapture={(e) => {
+                                        e.preventDefault();
+                                    }}
                                     placeholder="blur"
                                     blurDataURL={art.src}
                                     className="object-cover w-full h-full"

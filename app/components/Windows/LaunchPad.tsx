@@ -20,6 +20,12 @@ export default function LaunchPad() {
                         src={app.src}
                         alt={app.alt}
                         height={100}
+                        onContextMenu={(e) => {
+                            e.preventDefault();  
+                        }}
+                        onContextMenuCapture={(e) => {
+                            e.preventDefault();
+                        }}
                         priority
                         placeholder="blur"
                         blurDataURL={app.src}

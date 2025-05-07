@@ -56,6 +56,12 @@ export default function Icon({
         <div 
             onClick={handleOpenWindow}
             className="relative group cursor-pointer"
+            onContextMenu={(e) => {
+                e.preventDefault();  
+            }}
+            onContextMenuCapture={(e) => {
+                e.preventDefault();
+            }}
         >
             <Image 
                 src={src} 

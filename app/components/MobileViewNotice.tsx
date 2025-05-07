@@ -15,6 +15,16 @@ export default function MobileViewNotice() {
                     alt="bg"
                     width={500}
                     height={500}
+                    onContextMenu={(e) => {
+                        e.preventDefault();  
+                    }}
+                    onContextMenuCapture={(e) => {
+                        e.preventDefault();
+                    }}
+                    placeholder="blur"
+                    blurDataURL="/images/assets/70838932.jpeg"
+                    draggable={false}
+                    priority
                     className="object-cover w-full h-auto"
                 />
             </div>
@@ -29,7 +39,7 @@ export default function MobileViewNotice() {
                     href="https://fabiconcept.online"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-5 p-2 bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 rounded-2xl w-full flex items-center group shadow-[0px_5px_25px] shadow-foreground/10 hover:shadow-foreground/15 transition-all duration-300"
+                    className="mt-5 p-2 bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 rounded-2xl w-full flex items-center group shadow-[0px_5px_25px] shadow-foreground/10 hover:shadow-foreground/15 transition-all duration-300 active:scale-95 active:opacity-75"
                 >
                     <div className="flex items-center gap-2">
                         <Image
@@ -37,6 +47,16 @@ export default function MobileViewNotice() {
                             alt="fabiconcept"
                             width={50}
                             height={50}
+                            onContextMenu={(e) => {
+                                e.preventDefault();  
+                            }}
+                            onContextMenuCapture={(e) => {
+                                e.preventDefault();
+                            }}
+                            placeholder="blur"
+                            blurDataURL="/images/assets/70838932.jpeg"
+                            draggable={false}
+                            priority
                             className="rounded-full"
                         />
                         <span className="text-white">fabiconcept.online</span>

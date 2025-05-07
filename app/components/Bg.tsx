@@ -25,6 +25,16 @@ export default function Bg({ }: BgProps) {
                 src="/images/macos-monterey.jpg"
                 alt="bg"
                 fill
+                onContextMenu={(e) => {
+                    e.preventDefault();  
+                }}
+                onContextMenuCapture={(e) => {
+                    e.preventDefault();
+                }}
+                placeholder="blur"
+                blurDataURL="/images/assets/70838932.jpeg"
+                draggable={false}
+                priority
                 className={clsx(
                     theme ==="dark" && "brightness-75 -contrast-50",
                 )}

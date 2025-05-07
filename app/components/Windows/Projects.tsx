@@ -13,6 +13,12 @@ export default function Projects() {
                         width={1000}
                         priority
                         placeholder="blur"
+                        onContextMenu={(e) => {
+                            e.preventDefault();  
+                        }}
+                        onContextMenuCapture={(e) => {
+                            e.preventDefault();
+                        }}
                         blurDataURL={project.src}
                         height={1000}
                         className="object-cover w-full min-h-full"
