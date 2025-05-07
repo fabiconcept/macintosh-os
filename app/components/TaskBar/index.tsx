@@ -60,7 +60,7 @@ const SortableIcon = ({ id, ...props }: IconProps & { id: string }) => {
 export default function TaskBar() {
     // State to track the order of icons
     const [taskbarIcons, setTaskbarIcons] = useState(
-        icons.map((icon, index) => ({ ...icon, id: `icon-${index}` }))
+        icons.map((icon) => ({ ...icon, id: icon.id }))
     );
 
     // State to track the currently active (dragging) item

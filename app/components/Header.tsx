@@ -50,7 +50,7 @@ export default function Header() {
                     title="Go to my main website" 
                     className="flex items-center gap-2 group"
                 >
-                    <div className="h-7 w-7 rounded-full grid place-items-center text-white bg-gradient-to-b from-blue-500 via-blue-600 to-blue-700">
+                    <div className="h-7 w-7 rounded-full grid place-items-center border border-foreground/10 text-white bg-gradient-to-b from-blue-500 via-blue-600 to-blue-700">
                         <span className="drop-shadow-md inset-shadow text-sm font-semibold">FA</span>
                     </div>
                     <p className={clsx(

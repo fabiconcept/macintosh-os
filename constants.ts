@@ -82,13 +82,13 @@ export const permanentIcons: IconProps[] = [
         tooltip: "Projects",
         windowType: WindowType.Downloads,
     },
-    {
-        id: "per-icon-2",
-        src: "/images/icons/bin.png",
-        alt: "Bin",
-        tooltip: "Bin",
-        windowType: WindowType.Bin,
-    }
+    // {
+    //     id: "per-icon-2",
+    //     src: "/images/icons/bin.png",
+    //     alt: "Bin",
+    //     tooltip: "Bin",
+    //     windowType: WindowType.Bin,
+    // }
 ]
 
 export type QuoteDictionary = {
@@ -552,5 +552,44 @@ export const cssArt: CSSArt[] = [
         alt: "CSS Art",
         name: "Among Us",
         url: "https://rawcdn.githack.com/fabiconcept/css-art/396cb3c7bae488b5ad82ae703c816f6c4810aed4/among-us.html",
+    }
+]
+
+interface GraphicDesign {
+    id: string;
+    src: string;
+    alt: string;
+    name: string;
+    url: string;
+}
+
+export const graphicDesign: GraphicDesign[] = [
+    {
+        id: "grid-d",
+        src: "/images/photos/pic01.jpg",
+        alt: "Graphic Design 01",
+        name: "Flyer Design",
+        url: "https://www.instagram.com/p/Ceg8GHjLKQF/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    },
+    {
+        id: "grid-c",
+        src: "/images/photos/pic03.jpg",
+        alt: "Graphic Design 03",
+        name: "Jagaban",
+        url: "https://www.instagram.com/p/CeuKupSrg3s/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    },
+    {
+        id: "grid-b",
+        src: "/images/photos/pic04.jpg",
+        alt: "Graphic Design 04",
+        name: "Cisca Cakes",
+        url: "https://www.instagram.com/p/CeuLnaNM-P6/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    },
+    {
+        id: "grid-a",
+        src: "/images/photos/pic02.jpg",
+        alt: "Graphic Design 02",
+        name: "The Fallen One",
+        url: "https://www.instagram.com/p/Ce5pDxura_0/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
     }
 ]

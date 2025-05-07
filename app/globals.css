@@ -141,3 +141,29 @@ body {
 .toggle-input:checked + .toggle .toggle-icon.off {
   fill: var(--active-color);
 }
+
+.graphic-design-grid {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 14rem 14rem 14rem;
+  grid-template-areas: 
+    "a b"
+    "a c"
+    "d d"
+  ;
+}
+
+.grid-a {
+  grid-area: a;
+}
+
+.grid-b {
+  grid-area: b;
+}
+
+.grid-c {
+  grid-area: c;
+}
+
+.grid-d {
+  grid-area: d;
+}
