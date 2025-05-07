@@ -4,7 +4,6 @@ export const BOX_HEIGHT = 400;
 export enum WindowType {
     Finder = "finder",
     Launchpad = "launchpad",
-    Notes = "notes",
     Terminal = "terminal",
     Mail = "mail",
     Safari = "safari",
@@ -12,6 +11,7 @@ export enum WindowType {
     Spotify = "spotify",
     Downloads = "downloads",
     Bin = "bin",
+    Photos = "photos",
 }
 
 export interface IconProps {
@@ -39,10 +39,10 @@ export const icons: IconProps[] = [
     },
     {
         id: "icon-3",
-        src: "/images/icons/notes.png",
-        alt: "Notes",
-        tooltip: "Notes",
-        windowType: WindowType.Notes,
+        src: "/images/icons/photos.png",
+        alt: "Photos",
+        tooltip: "Photos",
+        windowType: WindowType.Photos,
     },
     {
         id: "icon-4",
@@ -499,5 +499,58 @@ export const projects: Project[] = [
         name: "Offrcloud Website Project",
         type: "Website",
         url: "https://landing-page-7cc2.vercel.app/",
+    }
+]
+
+interface CSSArt {
+    id: string;
+    src: string;
+    alt: string;
+    name: string;
+    url: string;
+}
+
+export const cssArt: CSSArt[] = [
+    {
+        id: "css-art-1",
+        src: "https://raw.githubusercontent.com/fabiconcept/css-art/main/snapshot/screenshot005.jpg",
+        alt: "CSS Art",
+        name: "Monster 01",
+        url: "https://raw.githack.com/fabiconcept/css-art/main/monster01.html",
+    },
+    {
+        id: "css-art-2",
+        src: "https://raw.githubusercontent.com/fabiconcept/css-art/main/snapshot/screenshot002.jpg",
+        alt: "CSS Art",
+        name: "Boy from Tutorial",
+        url: "https://raw.githack.com/fabiconcept/css-art/main/boyFromTutorial.html",
+    },
+    {
+        id: "css-art-3",
+        src: "https://raw.githubusercontent.com/fabiconcept/css-art/main/snapshot/screenshot001.jpg",
+        alt: "CSS Art",
+        name: "Cool Old Guy",
+        url: "https://raw.githack.com/fabiconcept/css-art/main/figure01.html",
+    },
+    {
+        id: "css-art-4",
+        src: "https://raw.githubusercontent.com/fabiconcept/css-art/main/snapshot/screenshot004.jpg",
+        alt: "CSS Art",
+        name: "Sad Hopper",
+        url: "https://raw.githack.com/fabiconcept/css-art/main/hopper.html",
+    },
+    {
+        id: "css-art-5",
+        src: "https://raw.githubusercontent.com/fabiconcept/css-art/main/snapshot/screenshot003.jpg",
+        alt: "CSS Art",
+        name: "Monster 02",
+        url: "https://raw.githack.com/fabiconcept/css-art/main/figure02.html",
+    },
+    {
+        id: "css-art-6",
+        src: "https://raw.githubusercontent.com/fabiconcept/css-art/main/snapshot/Screenshot%202025-05-06%20at%2018.48.22.png",
+        alt: "CSS Art",
+        name: "Among Us",
+        url: "https://rawcdn.githack.com/fabiconcept/css-art/396cb3c7bae488b5ad82ae703c816f6c4810aed4/among-us.html",
     }
 ]

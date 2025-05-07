@@ -19,6 +19,7 @@ import clsx from 'clsx';
 import Mail from '../Windows/Mail';
 import Setting from '../Windows/Setting';
 import Projects from '../Windows/Projects';
+import Photos from '../Windows/Photos';
 
 
 const EDGE_PADDING = 0;
@@ -91,6 +92,8 @@ const DraggableBox = ({
         return <Setting />;
       case 'downloads':
         return <Projects />;
+      case 'photos':
+        return <Photos />;
       default:
         return <div>Window not found</div>;
     }

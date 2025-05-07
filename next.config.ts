@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: "pickholder.sirv.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "raw.githubusercontent.com",
+        pathname: "/**",
+      }
     ],
   },
 };
