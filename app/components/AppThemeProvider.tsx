@@ -7,11 +7,8 @@ import { useLocalStorage } from "@/store/useLocalStorage";
 import { useEffect } from "react";
 
 export default function AppThemeProvider({ children, className }: { children: React.ReactNode, className?: string }) {
-    // get system theme
-    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    
     const { theme, allowCookies, timeFormat, setTheme, setAllowCookies, setTimeFormat } = useAppStore();
-    const [storedAppSettings, setStoredAppSettings] = useLocalStorage("app-settings", { 
+    const [storedAppSettings, setStoredAppSettings] = useLocalStorage("app-settings", {
         theme: "dark",
         timeFormat: "24",
         allowCookies: false,
@@ -19,7 +16,9 @@ export default function AppThemeProvider({ children, className }: { children: Re
     });
 
     useEffect(() => {
-        if(storedAppSettings.allowCookies) {
+        const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+
+        if (storedAppSettings.allowCookies) {
             setTheme(storedAppSettings.theme as "dark" | "light");
             setAllowCookies(storedAppSettings.allowCookies);
             setTimeFormat(storedAppSettings.timeFormat as "24" | "12");
@@ -29,7 +28,7 @@ export default function AppThemeProvider({ children, className }: { children: Re
     }, [storedAppSettings]);
 
     useEffect(() => {
-        if(!allowCookies) return;
+        if (!allowCookies) return;
         setStoredAppSettings({ theme, allowCookies, timeFormat, isDefault: false });
     }, [theme, allowCookies, timeFormat]);
 

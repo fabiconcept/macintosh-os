@@ -81,7 +81,7 @@ export default function Mail() {
     };
     
     return (
-        <div className="p-2 flex flex-col text-sm">
+        <div className="flex flex-col text-sm">
             <div className="flex items-center gap-2 border-b border-foreground/30 pb-1">
                 <span className="opacity-50">To:</span>
                 <span className={clsx(
@@ -138,6 +138,7 @@ export default function Mail() {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     onBlur={() => markAsTouched('message')}
+                    maxLength={500}
                     placeholder="Enter your message"
                     className="bg-transparent border-none outline-none max-h-[220px] resize-none field-sizing-content py-2 px-1"
                 />
