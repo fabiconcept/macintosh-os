@@ -20,6 +20,9 @@ export default function Spotify() {
                     src="/images/assets/ab6775700000ee8506ab9e5f16d551fa2e4c59d2.jpeg"
                     alt="spotify"
                     width={100}
+                    priority
+                    placeholder="blur"
+                    blurDataURL="/images/assets/ab6775700000ee8506ab9e5f16d551fa2e4c59d2.jpeg"
                     height={100}
                     className="rounded-full shadow-[0px_5px_25px_rgba(0,0,0,0.35)] relative z-10"
                 />
@@ -40,9 +43,12 @@ export default function Spotify() {
                                     src={artist.src}
                                     alt={artist.alt}
                                     width={100}
-                                height={100}
-                                className="select-none w-full aspect-square rounded-full shadow-[0px_5px_25px_rgba(0,0,0,0.35)] relative z-10"
-                            />
+                                    priority
+                                    placeholder="blur"
+                                    blurDataURL={artist.src}
+                                    height={100}
+                                    className="select-none w-full aspect-square rounded-full shadow-[0px_5px_25px_rgba(0,0,0,0.35)] relative z-10"
+                                />
                             <div 
                                 className="absolute bottom-0 right-0 group-hover:opacity-100 transition-all duration-300 group-hover:-translate-y-2 opacity-0 w-12 h-12 z-10 rounded-full bg-green-500 grid place-items-center group-active:scale-95 group-active:rotate-12 group-active:-translate-y-1">
                                 <Play fill="black" size={20} className="text-black"/>

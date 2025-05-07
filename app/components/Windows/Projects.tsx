@@ -11,6 +11,9 @@ export default function Projects() {
                         src={project.src}
                         alt={project.alt}
                         width={1000}
+                        priority
+                        placeholder="blur"
+                        blurDataURL={project.src}
                         height={1000}
                         className="object-cover w-full min-h-full"
                     />

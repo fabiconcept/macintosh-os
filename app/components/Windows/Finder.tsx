@@ -98,6 +98,9 @@ export default function Finder() {
                                 alt={language.name}
                                 width={100}
                                 height={100}
+                                priority
+                                placeholder="blur"
+                                blurDataURL={language.icon}
                                 className="h-6 w-auto object-contain drop-shadow-[0px_0px_2.5px_rgba(255,255,255,0.25)]"
                             />
                             <p className="text-sm">{language.name}</p>

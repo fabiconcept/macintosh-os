@@ -19,7 +19,7 @@ export default function Photos() {
                                     width={250}
                                     height={250}
                                     draggable={false}
-                                    priority={true}
+                                    priority
                                     placeholder="blur"
                                     blurDataURL={design.src}
                                     className="object-cover w-full h-full"
@@ -50,7 +50,7 @@ export default function Photos() {
                                     width={250}
                                     height={250}
                                     draggable={false}
-                                    priority={true}
+                                    priority
                                     placeholder="blur"
                                     blurDataURL={art.src}
                                     className="object-cover w-full h-full"

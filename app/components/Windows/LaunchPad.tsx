@@ -20,6 +20,9 @@ export default function LaunchPad() {
                         src={app.src}
                         alt={app.alt}
                         height={100}
+                        priority
+                        placeholder="blur"
+                        blurDataURL={app.src}
                         width={100}
                         draggable={false}
                         className="object-contain aspect-square h-full w-full group-hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.1)] group-active:scale-95 transition-all duration-300"

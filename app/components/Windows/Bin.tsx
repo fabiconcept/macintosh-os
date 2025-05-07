@@ -30,7 +30,7 @@ export default function Bin() {
                             width={250}
                             height={250}
                             draggable={false}
-                            priority={true}
+                            priority
                             placeholder="blur"
                             blurDataURL={item.icon}
                             className="object-contain w-full h-full"

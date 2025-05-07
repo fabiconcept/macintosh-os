@@ -18,6 +18,9 @@ export default function Setting() {
                             src="/images/assets/mode_1.svg"
                             alt="mode_1"
                             width={150}
+                            priority
+                            placeholder="blur"
+                            blurDataURL="/images/assets/mode_1.svg"
                             height={150}
                             className="cursor-pointer"
                             onClick={() => setTheme("light")}
@@ -31,6 +34,9 @@ export default function Setting() {
                             src="/images/assets/mode_2.svg"
                             alt="mode_2"
                             width={150}
+                            priority
+                            placeholder="blur"
+                            blurDataURL="/images/assets/mode_2.svg"
                             height={150}
                             className="cursor-pointer"
                             onClick={() => setTheme("dark")}
