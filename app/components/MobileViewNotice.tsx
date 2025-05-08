@@ -24,7 +24,7 @@ export default function MobileViewNotice() {
     return (
         <div className="min-[767px]:hidden min-h-[100dvh] flex flex-col">
             <motion.div
-                initial={{ opacity: 0, x: "100%" }}
+                initial={{ opacity: 0, x: "-100%" }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.25, type: "spring", stiffness: 100, damping: 10, delay: 0.25 }}
             >
