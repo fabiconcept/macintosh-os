@@ -59,9 +59,9 @@ export default function Bg({ }: BgProps) {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.25, type: "spring", stiffness: 100, damping: 10 }}
                         className="text-xl text-white font-normal drop-shadow-[0_0_2px_rgba(0,0,0,0.5)] mt-4">
-                        <span className="text-foreground/50">&quot;</span>
+                        <span>&quot;</span>
                         The one who stands at the pinnacle of all races
-                        <span className="text-foreground/50">&quot;</span>
+                        <span>&quot;</span>
                     </motion.p>
                 </div>
             </div>

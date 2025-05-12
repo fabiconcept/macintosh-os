@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from 'next/server';
  * Email request body interface
  */
 interface EmailRequestBody {
-    to: string | string[];
+    from: string;
     subject: string;
     text?: string;
     html?: string;
@@ -16,22 +16,16 @@ interface EmailRequestBody {
  */
 export async function POST(req: NextRequest) {
     try {
-        console.log('Email sending started...');
-        // Parse the request body
         const body = await req.json() as EmailRequestBody;
 
-        // Validate required fields
-        if (!body.to || !body.subject) {
-            console.log('Missing required fields: "to" and "subject" are required');
+        if (!body.from || !body.subject) {
             return NextResponse.json(
-                { error: 'Missing required fields: "to" and "subject" are required' },
+                { error: 'Missing required fields: "from" and "subject" are required' },
                 { status: 400 }
             );
         }
 
-        // Validate that either text or html is provided
         if (!body.text && !body.html) {
-            console.log('Either "text" or "html" content must be provided');
             return NextResponse.json(
                 { error: 'Either "text" or "html" content must be provided' },
                 { status: 400 }
@@ -40,9 +34,9 @@ export async function POST(req: NextRequest) {
 
         // Send the email
         const result = await gmailService.send({
-            to: body.to,
+            from: body.from,
             subject: body.subject,
-            text: body.text,
+            text: `Email from ${body.from}:\n ${body.text}`,
             html: body.html
         });
 

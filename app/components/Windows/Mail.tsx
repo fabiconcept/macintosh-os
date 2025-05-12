@@ -4,6 +4,7 @@ import clsx from "clsx";
 import { AlertCircle, LucideChevronDown, LucideSend } from "lucide-react";
 import { useMemo, useState } from "react";
 import toast from "react-hot-toast";
+import { sanitizeString } from "@/util";
 
 export default function Mail() {
     const { theme } = useAppStore()
@@ -40,11 +41,15 @@ export default function Mail() {
             message: true
         });
         
-        console.log('Sending email...');
         const payload = {
-            to: 'fabiconceptdev@gmail.com',
+            from: from,
             subject: subject,
-            text: message,
+            text: sanitizeString(message, {
+                replaceChar: '-',
+                preserveSpaces: true,
+                preserveCase: true,
+                maxLength: 500
+            }),
         };
 
         try {

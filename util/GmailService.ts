@@ -4,7 +4,7 @@ import nodemailer, { Transporter, SendMailOptions } from 'nodemailer';
  * Email options interface
  */
 interface EmailOptions {
-  to: string | string[];
+  from: string;
   subject: string;
   text?: string;
   html?: string;
@@ -45,8 +45,8 @@ class GmailService {
    */
   async send(options: EmailOptions): Promise<any> {
     const mailOptions: SendMailOptions = {
-      from: this.email,
-      to: options.to,
+      from: options.from,
+      to: this.email,
       subject: options.subject
     };
 

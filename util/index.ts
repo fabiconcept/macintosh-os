@@ -35,3 +35,46 @@ export const getUptimeOutput = (): string => {
     linkElement.click();
     document.body.removeChild(linkElement);
 };   
+
+
+export function sanitizeString(
+    input: string,
+    options: {
+        replaceChar?: string,
+        preserveSpaces?: boolean,
+        preserveCase?: boolean,
+        maxLength?: number
+    } = {}
+): string {
+    if (!input) return '';
+
+    const {
+        replaceChar = '_',
+        preserveSpaces = false,
+        preserveCase = false,
+        maxLength
+    } = options;
+
+    let result = input
+
+    if (preserveSpaces) {
+        result = result.replace(/[^\w\s]/g, replaceChar);
+        result = result.replace(/\s+/g, ' ');
+    } else {
+        result = result.replace(/\W/g, replaceChar);
+    }
+
+    result = result.replace(new RegExp(`${replaceChar}{2,}`, 'g'), replaceChar);
+
+    if (!preserveCase) {
+        result = result.toLowerCase();
+    }
+
+    result = result.replace(new RegExp(`^${replaceChar}+|${replaceChar}+$`, 'g'), '');
+
+    if (maxLength && result.length > maxLength) {
+        result = result.substring(0, maxLength);
+    }
+
+    return result;
+}
