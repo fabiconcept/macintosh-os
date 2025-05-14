@@ -63,6 +63,6 @@ export const projects: Project[] = [
         alt: "Website",
         name: "Offrcloud Website Project",
         type: "Website",
-        url: "https://landing-page-7cc2.vercel.app/",
+        url: "https://landing-page-ten-rose.vercel.app/",
     }
 ]
