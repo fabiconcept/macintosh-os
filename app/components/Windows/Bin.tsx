@@ -22,7 +22,13 @@ export default function Bin() {
     return (
         <div className="p-2 grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-3">
             {trash.map((item) => (
-                <button onDoubleClick={() => handleDoubleClick(item)} title="Double click to download" key={item.id} className="flex flex-col gap-2 cursor-pointer items-center group p-1 rounded-lg">
+                <button 
+                    onDoubleClick={() => handleDoubleClick(item)} 
+                    title="Double click to download" 
+                    key={item.id} 
+                    className="flex flex-col gap-2 cursor-pointer items-center group p-1 rounded-lg"
+                    draggable
+                >
                     <div className="p-1 rounded-lg group-focus:bg-foreground/5 group-hover:bg-foreground/2 w-[100px]">
                         <Image
                             src={item.icon}
@@ -39,7 +45,7 @@ export default function Bin() {
                             }}
                             placeholder="blur"
                             blurDataURL={item.icon}
-                            className="object-contain w-full h-full"
+                            className="object-contain w-full h-full max-h-[256px]"
                         />
                     </div>
                     <p className="text-center text-sm opacity-75 group-hover:opacity-100 group-focus:bg-blue-600 group-focus:text-white w-fit mx-auto px-1 rounded group-focus:opacity-100 transition-all duration-300">{item.name}</p>
