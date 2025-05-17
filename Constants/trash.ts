@@ -24,7 +24,7 @@ export const trash: Trash[] = [
     {
         id: "trash-3",
         name: "Untitled 02",
-        icon: "https://pickholder.sirv.com/Images/CyberGhost.png",
+        icon: "https://pickholder.sirv.com/Images/icon.jpg",
         downloadable: true,
         downloadURL: "https://pickholder.sirv.com/Images/CyberGhost.png"
     }
