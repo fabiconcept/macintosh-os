@@ -22,6 +22,7 @@ import Projects from '../Windows/Projects';
 import Photos from '../Windows/Photos';
 import Finder from '../Windows/Finder';
 import Bin from '../Windows/Bin';
+import useSoundEffect from '@useverse/usesoundeffect';
 
 
 const EDGE_PADDING = 0;
@@ -67,16 +68,25 @@ const DraggableBox = ({
   const appliedX = position.x + (transform?.x || 0);
   const appliedY = position.y + (transform?.y || 0);
 
+  const exitSound = useSoundEffect("/audio/ui-close.mp3", {
+    volume: 0.2,
+  });
+  const minimizeSound = useSoundEffect("/audio/minimize.mp3", {
+    volume: 0.1,
+  });
+
   const style: React.CSSProperties = {
     transform: `translate3d(${appliedX}px, ${appliedY}px, 0)`,
     transition: isDragging ? 'none' : 'transform 0.3s ease',
   };
 
   const handleClose = () => {
+    exitSound.play();
     removeWindow(windowProps.id);
   }
 
   const handleMinimize = () => {
+    minimizeSound.play();
     minimizeWindow(windowProps.id, position);
   }
 

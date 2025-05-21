@@ -5,6 +5,7 @@ import Image from "next/image";
 import useAppStore from "@/store";
 import { BOX_HEIGHT, BOX_WIDTH, IconProps } from "@/Constants/constants";
 import useAppWindows from "@/store/useAppWindows";
+import useSoundEffect from "@useverse/usesoundeffect";
 
 export default function Icon({
     src,
@@ -14,6 +15,9 @@ export default function Icon({
     windowType,
 }: IconProps) {
     const { theme } = useAppStore();
+    const clickSound = useSoundEffect("/audio/mouse-click.mp3", {
+        volume: 0.25,
+    });
 
     const { windows, addWindow, restoreWindow } = useAppWindows();
 
@@ -22,8 +26,9 @@ export default function Icon({
     const isWindowOpen = !!thisWindow;
 
     const handleOpenWindow = () => {
+        clickSound.play();
         if (thisWindow?.isMinimized) {
-            restoreWindow(id, );
+            restoreWindow(id);
             return;
         }
         if (isWindowOpen) return;

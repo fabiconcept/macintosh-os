@@ -3,8 +3,16 @@ import Image from "next/image";
 import { Trash, trash } from "@/Constants/trash";
 import { downloadHandler } from "@/util";
 import toast from "react-hot-toast";
+import useSoundEffect from "@useverse/usesoundeffect";
 
 export default function Bin() {
+    const clickSound = useSoundEffect("/audio/mouse-click.mp3", {
+        volume: 0.1,
+    });
+    const downloadSound = useSoundEffect("/audio/email-sent.mp3", {
+        volume: 0.1,
+    });
+
     const handleDoubleClick = async (item: Trash) => {
         if (!item.downloadable) return;
 
@@ -15,9 +23,12 @@ export default function Bin() {
 
         toast.promise(promise, {
             loading: "Downloading...",
-            success: "Downloaded successfully",
+            success: () => {
+                downloadSound.play();
+                return "Downloaded successfully";
+            },
             error: "Failed to download"
-        });
+        })
     }
     return (
         <div className="p-2 grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-3">
@@ -26,6 +37,8 @@ export default function Bin() {
                     onDoubleClick={() => handleDoubleClick(item)} 
                     title="Double click to download" 
                     key={item.id} 
+                    onClick={() => clickSound.play()}
+                    draggable
                     className="flex flex-col gap-2 cursor-pointer items-center group p-1 rounded-lg"
                 >
                     <div className="p-1 rounded-lg group-focus:bg-foreground/5 group-hover:bg-foreground/2 w-[100px]">

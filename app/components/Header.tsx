@@ -6,9 +6,17 @@ import { LucideMail } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import useSoundEffect from "@useverse/usesoundeffect";
 
 
 export default function Header() {
+    const linkHoverSound = useSoundEffect("/audio/link-hover.mp3", {
+        volume: 0.025,
+    });   
+    const clickSound = useSoundEffect("/audio/mouse-click.mp3", {
+        volume: 0.1,
+    });
+
     const { timeFormat } = useAppStore();
     
     const [time, setTime] = useState(() => {
@@ -55,6 +63,8 @@ export default function Header() {
                     rel="noopener noreferrer" 
                     title="Go to my main website" 
                     className="flex items-center gap-2 group"
+                    onMouseEnter={() => linkHoverSound.play()}
+                    onClick={() => clickSound.play()}
                 >
                     <div className="h-7 w-7 rounded-full grid place-items-center shadow-[0px_0px_5px] shadow-foreground/25 text-white bg-gradient-to-b from-blue-500 via-blue-600 to-blue-700">
                         <span className="drop-shadow-md inset-shadow text-sm font-semibold">FA</span>
@@ -66,7 +76,14 @@ export default function Header() {
                     )}>Favour Tochukwu Ajokubi</p>
                 </Link>
                 <div className="flex items-center gap-5">
-                    <Link href="mailto:fabiconceptdev@gmail.com" target="_blank" rel="noopener noreferrer" className="text-sm group relative">
+                    <Link 
+                        href="mailto:fabiconceptdev@gmail.com" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-sm group relative" 
+                        onMouseEnter={() => linkHoverSound.play()} 
+                        onClick={() => clickSound.play()}
+                    >
                         <p className={clsx(
                             "flex items-center gap-1",
                             "after:absolute after:-bottom-0.5 after:h-[1.5px] after:w-[0.925rem] after:bg-foreground after:left-0",

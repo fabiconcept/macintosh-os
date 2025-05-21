@@ -25,6 +25,7 @@ import {
 import { CSS } from "@dnd-kit/utilities";
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
+import useSoundEffect from "@useverse/usesoundeffect";
 
 // Create a sortable version of your Icon component
 const SortableIcon = ({ id, ...props }: IconProps & { id: string }) => {
@@ -64,6 +65,10 @@ export default function TaskBar() {
         icons.map((icon) => ({ ...icon, id: icon.id }))
     );
 
+    const swipeSound = useSoundEffect("/audio/swipe.mp3", {
+        volume: 0.25,
+    });
+
     // State to track the currently active (dragging) item
     const [activeId, setActiveId] = useState<string | null>(null);
 
@@ -88,8 +93,9 @@ export default function TaskBar() {
     const handleDragEnd = (event: DragEndEvent) => {
         const { active, over } = event;
         setActiveId(null);
-
+        
         if (over && active.id !== over.id) {
+            swipeSound.play();
             setTaskbarIcons((items) => {
                 const oldIndex = items.findIndex((item) => item.id === active.id);
                 const newIndex = items.findIndex((item) => item.id === over.id);
