@@ -5,12 +5,17 @@ import { AlertCircle, LucideChevronDown, LucideSend } from "lucide-react";
 import { useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import { sanitizeString } from "@/util";
+import useSoundEffect from "@useverse/usesoundeffect";
 
 export default function Mail() {
     const { theme } = useAppStore()
     const [subject, setSubject] = useState('');
     const [from, setFrom] = useState('');
     const [message, setMessage] = useState('');
+
+    const sendSound = useSoundEffect("/audio/email-sent.mp3", {
+        volume: 0.1,
+    });
     
     // Track touched state for fields
     const [touched, setTouched] = useState({
@@ -76,7 +81,10 @@ export default function Mail() {
         const promise = handleSend();
         toast.promise(promise, {
             loading: 'Sending email...',
-            success: 'Email sent successfully',
+            success: () => {
+                sendSound.play();
+                return 'Email sent successfully';
+            },
             error: 'Failed to send email'
         });
     }
