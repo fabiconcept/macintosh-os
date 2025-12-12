@@ -3,10 +3,10 @@
 [![Stars](https://img.shields.io/github/stars/fabiconcept/macintosh-os?style=social)](https://github.com/fabiconcept/macintosh-os)
 [![Forks](https://img.shields.io/github/forks/fabiconcept/macintosh-os?style=social)](https://github.com/fabiconcept/macintosh-os/network)
 [![License](https://img.shields.io/github/license/fabiconcept/macintosh-os)](LICENSE)
-[![Next.js](https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white)]
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-blue?logo=tailwind-css&logoColor=white)]
-[![TypeScript](https://img.shields.io/badge/TypeScript-blue?logo=typescript&logoColor=white)]
-[![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-000000?logo=vercel&logoColor=white)]
+![Next.js](https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-blue?logo=tailwind-css&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-blue?logo=typescript&logoColor=white)
+![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-000000?logo=vercel&logoColor=white)
 
 ---
 
