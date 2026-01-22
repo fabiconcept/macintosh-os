@@ -13,6 +13,7 @@
     "@dnd-kit/sortable": "^10.0.0",
     "@dnd-kit/utilities": "^3.2.2",
     "@ducanh2912/next-pwa": "^10.2.9",
+    "@useverse/useshortcuts": "^4.0.0",
     "@useverse/usesoundeffect": "^1.2.0",
     "animejs": "^4.0.2",
     "clsx": "^2.1.1",

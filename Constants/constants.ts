@@ -12,6 +12,7 @@ export enum WindowType {
     Downloads = "downloads",
     Bin = "bin",
     Photos = "photos",
+    IOSPaint = "iospaint",
     Test = "test",
 }
 
@@ -72,6 +73,13 @@ export const icons: IconProps[] = [
         alt: "Spotify",
         tooltip: "Spotify",
         windowType: WindowType.Spotify,
+    },
+    {
+        id: "icon-8",
+        src: "/images/icons/notes.png",
+        alt: "Paint Studio",
+        tooltip: "Paint Studio",
+        windowType: WindowType.IOSPaint,
     },
 ]
 

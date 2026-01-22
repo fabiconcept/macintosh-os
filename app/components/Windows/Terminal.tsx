@@ -354,9 +354,10 @@ export default function Terminal() {
           )}
         </div>
       ))}
+      <div className="absolute top-0 left-0 w-full h-full" onClick={() => inputRef.current?.focus()} />
 
       {/* Current prompt */}
-      <div className="flex items-center">
+      <div className="flex items-center relative z-10">
         <span className={clsx(
             "select-none",
             theme === "dark" ? "text-green-400" : "text-green-700"

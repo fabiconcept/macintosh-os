@@ -25,6 +25,8 @@ import Bin from '../Windows/Bin';
 import useSoundEffect from '@useverse/usesoundeffect';
 import { useFocusTrap } from '@/util/Hooks/useFocusTrap';
 import Test from '../Windows/Test';
+import IOSPaint from '../Windows/IOSPaint';
+import useShortcuts from '@useverse/useshortcuts';
 
 const EDGE_PADDING = 2;
 const EDGE_THRESHOLD = 20;
@@ -127,6 +129,27 @@ const DraggableBox = ({
     });
   };
 
+  useShortcuts({
+    shortcuts: [
+      { key: 'W', ctrlKey: true, platformAware: true, enabled: (isFocused && !isDragging && !isResizing) },
+      { key: 'F', ctrlKey: true, altKey: true, platformAware: true, enabled: (isFocused && !isDragging && !isResizing) },
+      { key: 'M', ctrlKey: true, altKey: true, platformAware: true, enabled: (isFocused && !isDragging && !isResizing) },
+    ],
+    onTrigger: (shortcut) => {
+      switch (shortcut.key) {
+        case 'W':
+          handleClose();
+          break;
+        case 'F':
+          handleMaximize();
+          break;
+        case 'F':
+          handleMaximize();
+          break;
+      }
+    }
+  }, [isFocused, isResizing, isDragging, isMaximized]);
+
   const handleResizeMove = useCallback((e: MouseEvent) => {
     if (!isResizing) return;
 
@@ -198,6 +221,8 @@ const DraggableBox = ({
         return <Bin />;
       case 'test':
         return <Test />;
+      case 'iospaint':
+        return <IOSPaint />;
       default:
         return <div>Window not found</div>;
     }

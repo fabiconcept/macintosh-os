@@ -28,6 +28,7 @@ import {
 import { CSS } from "@dnd-kit/utilities";
 import { createPortal } from "react-dom";
 import clsx from "clsx";
+import useSoundEffect from "@useverse/usesoundeffect";
 
 // Define the app type based on your constants
 type LaunchpadApp = {
@@ -52,6 +53,12 @@ const SortableAppItem = ({
 }) => {
     const { contextMenu, showContextMenu, hideContextMenu } = useContextMenu();
     const { addToDesktop } = useAppStore();
+    const clickSound = useSoundEffect("/audio/mouse-click.mp3", {
+        volume: 0.5,
+    });
+    const linkHoverSound = useSoundEffect("/audio/link-hover.mp3", {
+        volume: 0.15,
+    });
     const {
         attributes,
         listeners,
@@ -162,6 +169,8 @@ const SortableAppItem = ({
         <div
             ref={setNodeRef}
             style={style}
+            onMouseEnter={() => linkHoverSound.play()}
+            onClick={() => clickSound.play()}
             {...attributes}
             {...listeners}
             className="relative max-w-[7rem] cursor-grab active:cursor-grabbing w-full h-full aspect-square group touch-none"

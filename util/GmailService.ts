@@ -46,6 +46,7 @@ class GmailService {
   async send(options: EmailOptions): Promise<any> {
     const mailOptions: SendMailOptions = {
       from: options.from,
+      replyTo: options.from,
       to: this.email,
       subject: options.subject
     };

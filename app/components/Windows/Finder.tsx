@@ -7,6 +7,7 @@ import Link from "next/link";
 import { languages } from "@/Constants/languages";
 import useAppWindows from "@/store/useAppWindows";
 import { BOX_HEIGHT, BOX_WIDTH, icons } from "@/Constants/constants";
+import useSoundEffect from "@useverse/usesoundeffect";
 
 const righteous = Righteous({
     subsets: ["latin"],
@@ -16,6 +17,12 @@ const righteous = Righteous({
 
 export default function Finder() {
     const { windows, addWindow, restoreWindow } = useAppWindows();
+    const linkHoverSound = useSoundEffect("/audio/link-hover.mp3", {
+        volume: 0.15,
+    });
+    const clickSound = useSoundEffect("/audio/mouse-click.mp3", {
+        volume: 0.5,
+    });
 
     const mailWindow = windows.find((window) => window.id === "mail");
     const isMailOpen = !!mailWindow;
@@ -82,7 +89,15 @@ export default function Finder() {
 
             </div>
             <div className="flex items-center gap-1 my-5">
-                <Link title="Drop me a message anonymously" href="https://secret-room-orpin.vercel.app/ginvite/global-98cd99b7-bd7b-4942-a6b0-c16feff7f39b" target="_blank" rel="noopener noreferrer" className="bg-background flex items-center gap-1 justify-center flex-2 shadow-[0px_5px_25px_rgba(0,0,0,0.05)] px-5 py-3 text-sm rounded-full w-fit cursor-pointer hover:border-foreground/20 border border-foreground/5 active:scale-95 transition-all duration-300 active:opacity-75">
+                <Link 
+                    title="Drop me a message anonymously" 
+                    href="https://secret-room-orpin.vercel.app/ginvite/global-98cd99b7-bd7b-4942-a6b0-c16feff7f39b" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="bg-background flex items-center gap-1 justify-center flex-2 shadow-[0px_5px_25px_rgba(0,0,0,0.05)] px-5 py-3 text-sm rounded-full w-fit cursor-pointer hover:border-foreground/20 border border-foreground/5 active:scale-95 transition-all duration-300 active:opacity-75"
+                    onMouseEnter={() => linkHoverSound.play()}
+                    onClick={() => clickSound.play()}
+                >
                     <AnnoyedIcon size={20} />
                     Anonymous Feedback
                 </Link>
@@ -90,7 +105,15 @@ export default function Finder() {
                     <Mail size={20} />
                     Contact me
                 </button>
-                <Link href="https://github.com/fabiconcept/macintosh-os" target="_blank" rel="noopener noreferrer" title="Star this repo" className="bg-background shadow-[0px_5px_25px_rgba(0,0,0,0.05)] flex items-center justify-center px-5 py-3 text-sm rounded-full w-fit cursor-pointer hover:border-foreground/20 border border-foreground/5 active:scale-95 transition-all duration-300 active:opacity-75">
+                <Link 
+                    href="https://github.com/fabiconcept/macintosh-os" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    title="Star this repo" 
+                    className="bg-background shadow-[0px_5px_25px_rgba(0,0,0,0.05)] flex items-center justify-center px-5 py-3 text-sm rounded-full w-fit cursor-pointer hover:border-foreground/20 border border-foreground/5 active:scale-95 transition-all duration-300 active:opacity-75"
+                    onMouseEnter={() => linkHoverSound.play()}
+                    onClick={() => clickSound.play()}
+                >
                     <Github size={20} />
                     <Star size={15} className="text-yellow-400 -ml-3" fill="oklch(85.2% 0.199 91.936)" />
                 </Link>

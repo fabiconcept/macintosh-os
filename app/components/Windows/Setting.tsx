@@ -3,10 +3,13 @@ import Image from "next/image";
 import clsx from "clsx";
 import useAppStore from "@/store";
 import { useLocalStorage } from "@/store/useLocalStorage";
+import useSoundEffect from "@useverse/usesoundeffect";
 
 export default function Setting() {
     const { setTheme, theme, setAllowCookies, allowCookies, setTimeFormat, timeFormat, setLiquidGlassCursor, liquidGlassCursor } = useAppStore();
-
+    const clickSound = useSoundEffect("/audio/mouse-click.mp3", {
+        volume: 0.1,
+    });
     const [_storedAppSettings, _setStoredAppSettings, deleteStoredAppSettings] = useLocalStorage("app-settings", {
         theme: "dark",
         timeFormat: "24",
@@ -16,6 +19,7 @@ export default function Setting() {
     });
 
     const handleAllowCookiesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        clickSound.play();
         if (!e.target.checked) {
             deleteStoredAppSettings();
         }
@@ -46,7 +50,10 @@ export default function Setting() {
                                 e.preventDefault();
                             }}
                             className="cursor-pointer"
-                            onClick={() => setTheme("light")}
+                            onClick={() => {
+                                clickSound.play();
+                                setTheme("light")
+                            }}
                         />
                     </div>
                     <div className={clsx(
@@ -68,7 +75,10 @@ export default function Setting() {
                                 e.preventDefault();
                             }}
                             className="cursor-pointer"
-                            onClick={() => setTheme("dark")}
+                            onClick={() => {
+                                clickSound.play();
+                                setTheme("dark")
+                            }}
                         />
                     </div>
                 </div>
@@ -106,6 +116,9 @@ export default function Setting() {
                         <select
                             name=""
                             id=""
+                            onChange={(e) => {
+                                clickSound.play();
+                            }}
                             className="border px-2 py-1 rounded-lg border-foreground/30"
                         >
                             <option value="">English (UK)</option>
@@ -114,7 +127,15 @@ export default function Setting() {
                     <div className="flex justify-between items-center">
                         <span>24 hour Format</span>
                         <div className="toggle-container">
-                            <input type="checkbox" className="toggle-input" checked={timeFormat === "24"} onChange={(e) => setTimeFormat(e.target.checked ? "24" : "12")} />
+                            <input 
+                                type="checkbox" 
+                                className="toggle-input" 
+                                checked={timeFormat === "24"} 
+                                onChange={(e) => {
+                                    clickSound.play();
+                                    setTimeFormat(e.target.checked ? "24" : "12")
+                                }}
+                            />
                             <svg viewBox="0 0 292 142" className="toggle">
                                 <path d="M71 142C31.7878 142 0 110.212 0 71C0 31.7878 31.7878 0 71 0C110.212 0 119 30 146 30C173 30 182 0 221 0C260 0 292 31.7878 292 71C292 110.212 260.212 142 221 142C181.788 142 173 112 146 112C119 112 110.212 142 71 142Z" className="toggle-background"></path>
                                 <rect rx="6" height="64" width="12" y="39" x="64" className="toggle-icon on"></rect>
@@ -134,7 +155,12 @@ export default function Setting() {
                     <div className="flex justify-between items-center">
                         <span>Allow Cookies</span>
                         <div className="toggle-container">
-                            <input type="checkbox" className="toggle-input" checked={allowCookies} onChange={handleAllowCookiesChange} />
+                            <input 
+                                type="checkbox" 
+                                className="toggle-input" 
+                                checked={allowCookies} 
+                                onChange={handleAllowCookiesChange} 
+                            />
                             <svg viewBox="0 0 292 142" className="toggle">
                                 <path d="M71 142C31.7878 142 0 110.212 0 71C0 31.7878 31.7878 0 71 0C110.212 0 119 30 146 30C173 30 182 0 221 0C260 0 292 31.7878 292 71C292 110.212 260.212 142 221 142C181.788 142 173 112 146 112C119 112 110.212 142 71 142Z" className="toggle-background"></path>
                                 <rect rx="6" height="64" width="12" y="39" x="64" className="toggle-icon on"></rect>

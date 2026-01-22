@@ -1,10 +1,19 @@
+"use client";
 import { Globe, Instagram } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { cssArt, graphicDesign } from "@/Constants/art";
 import clsx from "clsx";
+import useSoundEffect from "@useverse/usesoundeffect";
 
 export default function Photos() {
+    const clickSound = useSoundEffect("/audio/mouse-click.mp3", {
+        volume: 0.5,
+    });
+    const linkHoverSound = useSoundEffect("/audio/link-hover.mp3", {
+        volume: 0.15,
+    });
+
     return (
         <div className="grid gap-2">
             <div className="grid gap-2 p-2">
@@ -20,6 +29,8 @@ export default function Photos() {
                                     height={250}
                                     draggable={false}
                                     priority
+                                    onMouseEnter={() => linkHoverSound.play()}
+                                    onClick={() => clickSound.play()}
                                     onContextMenu={(e) => {
                                         e.preventDefault();  
                                     }}
@@ -57,6 +68,8 @@ export default function Photos() {
                                     height={250}
                                     draggable={false}
                                     priority
+                                    onMouseEnter={() => linkHoverSound.play()}
+                                    onClick={() => clickSound.play()}
                                     onContextMenu={(e) => {
                                         e.preventDefault();  
                                     }}

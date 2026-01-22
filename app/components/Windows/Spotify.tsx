@@ -1,9 +1,11 @@
+"use client";
 import Image from "next/image";
 import { Righteous } from "next/font/google";
 import clsx from "clsx";
 import { topArtists } from "@/Constants/artists";
 import { Play } from "lucide-react";
 import Link from "next/link";
+import useSoundEffect from "@useverse/usesoundeffect";
 
 const righteous = Righteous({
     subsets: ["latin"],
@@ -12,6 +14,13 @@ const righteous = Righteous({
 });
 
 export default function Spotify() {
+    const clickSound = useSoundEffect("/audio/mouse-click.mp3", {
+        volume: 0.1,
+    });
+    const linkHoverSound = useSoundEffect("/audio/link-hover.mp3", {
+        volume: 0.15,
+    });
+
     return (
         <div className="grid gap-2">
             <div className="bg-[rgb(248,216,160)] p-4 relative flex items-center gap-3">
@@ -34,7 +43,14 @@ export default function Spotify() {
                 />
                 <div className="flex flex-col gap-2 relative z-10">
                     <span className={clsx(righteous.className, "text-3xl text-white")}>Fabiconcept</span>
-                    <Link target="_blank" rel="noopener noreferrer" href="https://open.spotify.com/user/31jn27rgx5y4azikzdxv6xuhiylq?si=9912e8b0b6db4a4e" className="bg-white shadow-[0px_5px_25px_rgba(0,0,0,0.15)] px-5 py-2 text-sm rounded-full w-fit text-black cursor-pointer hover:scale-105 active:scale-95 transition-all duration-300 active:opacity-75">
+                    <Link 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        href="https://open.spotify.com/user/31jn27rgx5y4azikzdxv6xuhiylq?si=9912e8b0b6db4a4e" 
+                        className="bg-white shadow-[0px_5px_25px_rgba(0,0,0,0.15)] px-5 py-2 text-sm rounded-full w-fit text-black cursor-pointer hover:scale-105 active:scale-95 transition-all duration-300 active:opacity-75"
+                        onMouseEnter={() => linkHoverSound.play()}
+                        onClick={() => clickSound.play()}
+                    >
                         Follow
                     </Link>
                 </div>
@@ -43,7 +59,15 @@ export default function Spotify() {
                 <span>Top Artists</span>    
                 <div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))]">
                     {topArtists.map((artist) => (
-                        <Link key={artist.id} target="_blank" rel="noopener noreferrer" href={artist.url} className="flex flex-col gap-2 p-3 hover:bg-background/70 rounded-lg bg-transparent transition-all duration-300 cursor-pointer">
+                        <Link 
+                            key={artist.id} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            href={artist.url} 
+                            className="flex flex-col gap-2 p-3 hover:bg-background/70 rounded-lg bg-transparent transition-all duration-300 cursor-pointer" 
+                            onMouseEnter={() => linkHoverSound.play()}
+                            onClick={() => clickSound.play()}
+                        >
                             <div className="relative group">
                                 <Image
                                     src={artist.src}

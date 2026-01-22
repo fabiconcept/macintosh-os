@@ -13,6 +13,9 @@ export default function Mail() {
     const [from, setFrom] = useState('');
     const [message, setMessage] = useState('');
 
+    const clickSound = useSoundEffect("/audio/mouse-click.mp3", {
+        volume: 0.1,
+    });
     const sendSound = useSoundEffect("/audio/email-sent.mp3", {
         volume: 0.1,
     });
@@ -39,6 +42,7 @@ export default function Mail() {
     }, [subject, from, message]);
 
     const handleSend = async () => {
+        clickSound.play();
         // Mark all fields as touched when attempting to send
         setTouched({
             subject: true,

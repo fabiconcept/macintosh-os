@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image";
 import { projects } from "@/Constants/projects";
 import { motion, AnimatePresence } from 'framer-motion';
@@ -5,6 +6,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Project } from "@/Constants/projects";
 import ProjectDetail from "./components/ProjectDetail";
+import useSoundEffect from "@useverse/usesoundeffect";
 
 const springTransition = {
     type: "spring" as const,
@@ -27,9 +29,13 @@ const slideVariants = {
 };
 
 export default function Projects() {
+    const clickSound = useSoundEffect("/audio/mouse-click.mp3", {
+        volume: 0.1,
+    });
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
     const handleProjectClick = (project: Project) => {
+        clickSound.play();
         setSelectedProject(project);
     };
 
@@ -39,6 +45,7 @@ export default function Projects() {
 
     const handleVisitProject = () => {
         if (!selectedProject) return;
+        clickSound.play();
         window.open(selectedProject.url, '_blank', 'noopener,noreferrer');
     };
     return (

@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Project } from '@/Constants/projects';
 import { ArrowLeft, ExternalLink, Globe, Calendar, Code, Layers, Info } from 'lucide-react';
+import useSoundEffect from "@useverse/usesoundeffect";
 
 interface ProjectDetailProps {
     selectedProject: Project;
@@ -36,6 +37,10 @@ export default function ProjectDetail({
     handleBack,
     handleVisitProject
 }: ProjectDetailProps) {
+    const linkHoverSound = useSoundEffect("/audio/link-hover.mp3", {
+        volume: 0.15,
+    });
+
     return (
         <motion.div
             key="detail"
@@ -68,6 +73,7 @@ export default function ProjectDetail({
                     backgroundColor: "rgba(255,255,255,0.12)"
                   }}
                   title="Visit Project"
+                  onMouseEnter={() => linkHoverSound.play()}
                   whileTap={{ scale: 0.98 }}
                 >
                   <ExternalLink size={18} />
