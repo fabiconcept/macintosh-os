@@ -1,7 +1,7 @@
 "use client";
 import useAppStore from "@/store";
 import clsx from "clsx";
-import { AlertCircle, LucideChevronDown, LucideSend } from "lucide-react";
+import { AlertCircle, Loader2, LucideChevronDown, LucideSend } from "lucide-react";
 import { useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import { sanitizeString } from "@/util";
@@ -12,6 +12,7 @@ export default function Mail() {
     const [subject, setSubject] = useState('');
     const [from, setFrom] = useState('');
     const [message, setMessage] = useState('');
+    const [isSending, setIsSending] = useState(false);
 
     const clickSound = useSoundEffect("/audio/mouse-click.mp3", {
         volume: 0.1,
@@ -73,14 +74,21 @@ export default function Mail() {
             setSubject('');
             setFrom('');
             setMessage('');
+            setTouched({
+                subject: false,
+                from: false,
+                message: false
+            });
         } catch (error) {
             console.error('Failed to send email:', error);
             throw error;
+        } finally {
+            setIsSending(false);
         }
     };
 
     const watchHandleSend = () => {
-        if (!canSend) return;
+        if (!canSend || isSending) return;
         
         const promise = handleSend();
         toast.promise(promise, {
@@ -172,10 +180,10 @@ export default function Mail() {
                         canSend 
                             ? "cursor-pointer hover:scale-110 shadow-2xl bg-blue-500 text-white active:scale-90 active:rotate-12" 
                             : "opacity-0"
-                    }`} 
+                    } ${isSending ? "cursor-not-allowed opacity-50" : ""}`} 
                     onClick={watchHandleSend}
                 >
-                    <LucideSend size={20} />
+                    {isSending ? <Loader2 className="animate-spin" size={20} /> : <LucideSend size={20} />}
                 </button>
             </div>      
         </div>
