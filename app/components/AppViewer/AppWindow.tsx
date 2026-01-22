@@ -131,7 +131,7 @@ const DraggableBox = ({
 
   useShortcuts({
     shortcuts: [
-      { key: 'W', ctrlKey: true, platformAware: true, enabled: (isFocused && !isDragging && !isResizing) },
+      { key: 'W', ctrlKey: true, enabled: (isFocused && !isDragging && !isResizing) },
       { key: 'F', ctrlKey: true, altKey: true, platformAware: true, enabled: (isFocused && !isDragging && !isResizing) },
       { key: 'M', ctrlKey: true, altKey: true, platformAware: true, enabled: (isFocused && !isDragging && !isResizing) },
     ],

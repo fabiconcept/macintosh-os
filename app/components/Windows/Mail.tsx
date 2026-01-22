@@ -6,6 +6,7 @@ import { useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import { sanitizeString } from "@/util";
 import useSoundEffect from "@useverse/usesoundeffect";
+import useShortcuts, { KeyboardKey } from "@useverse/useshortcuts";
 
 export default function Mail() {
     const { theme } = useAppStore()
@@ -104,6 +105,18 @@ export default function Mail() {
     const markAsTouched = (field: string) => {
         setTouched(prev => ({ ...prev, [field]: true }));
     };
+
+    useShortcuts({
+        shortcuts: [{
+            key: KeyboardKey.Enter,
+            ctrlKey: true,
+            platformAware: true,
+            enabled: !!canSend && !isSending
+        }],
+        onTrigger: () => {
+            watchHandleSend();
+        }
+    }, [canSend, isSending]);
     
     return (
         <div className="flex flex-col text-sm">
