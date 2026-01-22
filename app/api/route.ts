@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
         const result = await gmailService.send({
             from: body.from,
             subject: body.subject,
-            text: `Email from ${body.from}:\n ${body.text}`,
+            text: `${body.text}`,
             html: body.html
         });
 
