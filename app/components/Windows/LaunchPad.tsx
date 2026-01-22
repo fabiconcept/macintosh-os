@@ -28,7 +28,6 @@ import {
 import { CSS } from "@dnd-kit/utilities";
 import { createPortal } from "react-dom";
 import clsx from "clsx";
-import useSoundEffect from "@useverse/usesoundeffect";
 
 // Define the app type based on your constants
 type LaunchpadApp = {
