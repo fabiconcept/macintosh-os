@@ -64,6 +64,7 @@ export default function Mail() {
         };
 
         try {
+            setIsSending(true);
             await fetch('/api', {
                 method: 'POST',
                 headers: {
