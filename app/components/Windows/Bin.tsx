@@ -98,7 +98,8 @@ const SortableTrashItem = ({ item, onDelete, onDuplicate, onShowInfo }: {
 
         const promise = downloadHandler({
             fileUrl: item.downloadURL!,
-            fileName: item.name
+            // remove the extension from the file name
+            fileName: item.name.replace(/\.[^/.]+$/, "")
         });
 
         toast.promise(promise, {
