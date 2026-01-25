@@ -4,6 +4,7 @@ import "./globals.css";
 import AppThemeProvider from "./components/AppThemeProvider";
 import { metadata as metadataConstants } from "@/Constants/metadata";
 import { PWAErrorBoundary } from "./components/PWAErrorBoundary";
+import GoogleAnalytics from "./components/GoogleAnalytics";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <GoogleAnalytics />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
         <meta name="theme-color" content="#000000" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
